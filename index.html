@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mezcal Raíz del Fuego | Mezcal Artesanal</title>
+  <title>Mezcal Raíz del Fuego</title>
   <style>
-    /* RESET & VARS */
+    /* ESTILOS GENERALES Y RESET */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --bg-dark: #121212;
@@ -15,7 +15,6 @@
       --text-muted: #a0a0a0;
       --accent-red: #c0392b;
     }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: var(--bg-dark);
@@ -23,7 +22,52 @@
       line-height: 1.6;
     }
 
-    /* MODAL DE EDAD (+18) */
+    /* LÓGICA DEL INTERRUPTOR DE MANTENIMIENTO */
+    body.modo-mantenimiento #vista-principal { display: none !important; }
+    body.modo-mantenimiento #vista-mantenimiento { display: flex !important; }
+
+    body:not(.modo-mantenimiento) #vista-mantenimiento { display: none !important; }
+    body:not(.modo-mantenimiento) #vista-principal { display: block; }
+
+    /* ESTILOS PANTALLA MANTENIMIENTO */
+    #vista-mantenimiento {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .mantenimiento-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--primary-gold);
+      padding: 40px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 100%;
+    }
+    .mantenimiento-card h1 {
+      color: var(--primary-gold);
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .mantenimiento-card p {
+      color: var(--text-muted);
+      margin-bottom: 25px;
+    }
+    .status-tag {
+      display: inline-block;
+      padding: 8px 16px;
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--primary-gold);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    /* ESTILOS LANDING PAGE PRINCIPAL */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -42,62 +86,28 @@
       max-width: 450px;
       width: 90%;
     }
-    .modal-content h2 {
-      color: var(--primary-gold);
-      margin-bottom: 15px;
-      font-size: 1.8rem;
-    }
-    .modal-buttons {
-      margin-top: 25px;
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-    }
+    .modal-content h2 { color: var(--primary-gold); margin-bottom: 15px; }
+    .modal-buttons { margin-top: 25px; display: flex; gap: 15px; justify-content: center; }
     .btn {
       padding: 12px 24px;
       border: none;
       border-radius: 4px;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.3s ease;
       text-decoration: none;
       display: inline-block;
     }
     .btn-yes { background: var(--primary-gold); color: #000; }
-    .btn-yes:hover { background: #b89628; }
     .btn-no { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); }
-    .btn-no:hover { background: var(--accent-red); color: #fff; }
 
-    /* HEADER & HERO */
-    header {
-      padding: 20px;
-      text-align: center;
-      border-bottom: 1px solid #333;
-    }
-    header h1 {
-      color: var(--primary-gold);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-size: 2rem;
-    }
+    header { padding: 20px; text-align: center; border-bottom: 1px solid #333; }
+    header h1 { color: var(--primary-gold); letter-spacing: 2px; text-transform: uppercase; }
     .hero {
       padding: 60px 20px;
       text-align: center;
       background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80') center/cover;
     }
-    .hero h2 { font-size: 2.5rem; margin-bottom: 15px; }
-    .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; }
-
-    /* SECCIÓN PRODUCTO */
-    .product {
-      max-width: 1000px;
-      margin: 50px auto;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      align-items: center;
-    }
+    .product { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
     .product-card {
       background: var(--bg-card);
       border-radius: 8px;
@@ -105,91 +115,84 @@
       border: 1px solid #333;
       text-align: center;
     }
-    .product-price {
-      font-size: 1.8rem;
-      color: var(--primary-gold);
-      margin: 15px 0;
-      font-weight: bold;
-    }
-    .btn-whatsapp {
-      background-color: #25d366;
-      color: #fff;
-      font-size: 1.1rem;
-      width: 100%;
-      text-align: center;
-    }
-    .btn-whatsapp:hover { background-color: #1eb954; }
-
-    /* NOM-142 & FOOTER LEGAL */
+    .product-price { font-size: 1.8rem; color: var(--primary-gold); margin: 15px 0; font-weight: bold; }
+    .btn-whatsapp { background-color: #25d366; color: #fff; font-size: 1.1rem; width: 100%; }
     .nom-banner {
       background: #000;
       color: #fff;
       text-align: center;
       padding: 15px;
       font-weight: bold;
-      letter-spacing: 1px;
       border-top: 1px solid #333;
       border-bottom: 1px solid #333;
       margin-top: 50px;
     }
-    footer {
-      padding: 30px 20px;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
+    footer { padding: 30px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
   </style>
 </head>
+
+<!-- EL SITIO ESTÁ ACTIVO / EN VIVO PORQUE LA ETIQUETA ES <body> (SIN LA CLASE) -->
 <body>
 
-  <!-- MODAL DE VERIFICACIÓN DE EDAD -->
-  <div id="age-modal" class="modal-overlay">
-    <div class="modal-content">
-      <h2>Verificación de Edad</h2>
-      <p>Debes ser mayor de edad para ingresar a este sitio y conocer nuestros productos artesanales.</p>
-      <p><strong>¿Tienes 18 años o más?</strong></p>
-      <div class="modal-buttons">
-        <button class="btn btn-yes" onclick="confirmAge(true)">Sí, soy mayor</button>
-        <button class="btn btn-no" onclick="confirmAge(false)">No</button>
+  <!-- 1. VISTA DE MANTENIMIENTO -->
+  <div id="vista-mantenimiento">
+    <div class="mantenimiento-card">
+      <h1>Mezcal Raíz del Fuego</h1>
+      <p>Estamos realizando mejoras en nuestro sitio web para brindarte una mejor experiencia.</p>
+      <div class="status-tag">Sitio en Mantenimiento</div>
+    </div>
+  </div>
+
+  <!-- 2. VISTA PRINCIPAL (SITIO EN VIVO) -->
+  <div id="vista-principal">
+    
+    <!-- MODAL DE EDAD (+18) -->
+    <div id="age-modal" class="modal-overlay">
+      <div class="modal-content">
+        <h2>Verificación de Edad</h2>
+        <p>Debes ser mayor de edad para ingresar a este sitio y conocer nuestros productos artesanales.</p>
+        <p><strong>¿Tienes 18 años o más?</strong></p>
+        <div class="modal-buttons">
+          <button class="btn btn-yes" onclick="confirmAge(true)">Sí, soy mayor</button>
+          <button class="btn btn-no" onclick="confirmAge(false)">No</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <header>
-    <h1>Mezcal Raíz del Fuego</h1>
-  </header>
+    <!-- CONTENIDO DE LA TIENDA -->
+    <header>
+      <h1>Mezcal Raíz del Fuego</h1>
+    </header>
 
-  <section class="hero">
-    <h2>El Espíritu Ancestral de Oaxaca</h2>
-    <p>100% Agave Espadín destilado con procesos tradicionales en alambique de cobre. Un mezcal de carácter, cuerpo y notas ahumadas únicas.</p>
-  </section>
+    <section class="hero">
+      <h2>El Espíritu Ancestral de Oaxaca</h2>
+      <p>100% Agave Espadín destilado con procesos tradicionales en alambique de cobre.</p>
+    </section>
 
-  <main class="product">
-    <div class="product-card">
-      <h3>Mezcal Artesanal Joven</h3>
-      <p style="color: var(--text-muted); font-size: 0.9rem;">45% Alc. Vol. | 750 ml</p>
-      <div class="product-price">$850 MXN</div>
-      <p>Edición limitada con notas florales, cítricas y el clásico ahumado del agave cocido en horno de piedra artesanal.</p>
-      <br>
-      <!-- REDIRECCIÓN DIRECTA A WHATSAPP -->
-      <a href="https://wa.me/5215500000000?text=Hola,%20me%20interesa%20comprar%20una%20botella%20de%20Mezcal%20Ra%C3%ADz%20del%20Fuego." target="_blank" class="btn btn-whatsapp">
-        Pedir por WhatsApp
-      </a>
+    <main class="product">
+      <div class="product-card">
+        <h3>Mezcal Artesanal Joven</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">45% Alc. Vol. | 750 ml</p>
+        <div class="product-price">$850 MXN</div>
+        <p>Edición limitada con notas florales, cítricas y el clásico ahumado del agave cocido en horno de piedra artesanal.</p>
+        <br>
+        <a href="https://wa.me/5215500000000?text=Hola,%20me%20interesa%20comprar%20una%20botella%20de%20Mezcal%20Ra%C3%ADz%20del%20Fuego." target="_blank" class="btn btn-whatsapp">
+          Pedir por WhatsApp
+        </a>
+      </div>
+    </main>
+
+    <div class="nom-banner">
+      EL ABUSO EN EL CONSUMO DE ESTE PRODUCTO ES NOCIVO PARA LA SALUD
     </div>
-  </main>
 
-  <!-- LEYENDA LEGAL CONFORME A LA NOM-142-SSA1/SCFI-2014 -->
-  <div class="nom-banner">
-    EL ABUSO EN EL CONSUMO DE ESTE PRODUCTO ES NOCIVO PARA LA SALUD
+    <footer>
+      <p>&copy; 2026 Mezcal Raíz del Fuego. Todos los derechos reservados.</p>
+      <p>Prohibida la venta a menores de 18 años. Consuma con responsabilidad.</p>
+    </footer>
+
   </div>
 
-  <footer>
-    <p>&copy; 2026 Mezcal Raíz del Fuego. Todos los derechos reservados.</p>
-    <p>Prohibida la venta a menores de 18 años. Consuma con responsabilidad.</p>
-  </footer>
-
-  <!-- SCRIPT PARA EL MODAL -->
   <script>
     function confirmAge(isAdult) {
       if (isAdult) {
