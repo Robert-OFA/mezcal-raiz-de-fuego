@@ -1,217 +1,205 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mezcal Raíz del Fuego | Tienda Oficial</title>
-    <style>
-        :root {
-            --negro-fuego: #121212;
-            --dorado-mezcal: #d4af37;
-            --blanco-humo: #f4f4f9;
-            --gris-tarjeta: #1e1e1e;
-            --verde-whatsapp: #25d366;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mezcal Raíz del Fuego | Mezcal Artesanal</title>
+  <style>
+    /* RESET & VARS */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-dark: #121212;
+      --bg-card: #1e1e1e;
+      --primary-gold: #d4af37;
+      --text-light: #f5f5f5;
+      --text-muted: #a0a0a0;
+      --accent-red: #c0392b;
+    }
 
-        body {
-            font-family: 'Georgia', serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--negro-fuego);
-            color: var(--blanco-humo);
-        }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
 
-        header {
-            text-align: center;
-            padding: 3rem 1rem 1.5rem;
-            background: linear-gradient(180deg, rgba(0,0,0,0.9), var(--negro-fuego));
-        }
+    /* MODAL DE EDAD (+18) */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .modal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--primary-gold);
+      padding: 40px 30px;
+      text-align: center;
+      border-radius: 8px;
+      max-width: 450px;
+      width: 90%;
+    }
+    .modal-content h2 {
+      color: var(--primary-gold);
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+    .modal-buttons {
+      margin-top: 25px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-yes { background: var(--primary-gold); color: #000; }
+    .btn-yes:hover { background: #b89628; }
+    .btn-no { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); }
+    .btn-no:hover { background: var(--accent-red); color: #fff; }
 
-        h1 {
-            color: var(--dorado-mezcal);
-            font-size: 2.5rem;
-            margin: 0 0 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+    /* HEADER & HERO */
+    header {
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+    header h1 {
+      color: var(--primary-gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 2rem;
+    }
+    .hero {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80') center/cover;
+    }
+    .hero h2 { font-size: 2.5rem; margin-bottom: 15px; }
+    .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; }
 
-        .tagline {
-            font-style: italic;
-            color: #ccc;
-            font-size: 1.1rem;
-        }
+    /* SECCIÓN PRODUCTO */
+    .product {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+    .product-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 30px;
+      border: 1px solid #333;
+      text-align: center;
+    }
+    .product-price {
+      font-size: 1.8rem;
+      color: var(--primary-gold);
+      margin: 15px 0;
+      font-weight: bold;
+    }
+    .btn-whatsapp {
+      background-color: #25d366;
+      color: #fff;
+      font-size: 1.1rem;
+      width: 100%;
+      text-align: center;
+    }
+    .btn-whatsapp:hover { background-color: #1eb954; }
 
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 1.5rem;
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--dorado-mezcal);
-            font-size: 1.8rem;
-            margin: 2rem 0 1rem;
-            border-bottom: 1px solid #333;
-            padding-bottom: 0.5rem;
-        }
-
-        /* Grid de Productos */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .product-card {
-            background-color: var(--gris-tarjeta);
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .product-card h3 {
-            color: var(--dorado-mezcal);
-            margin-top: 0;
-        }
-
-        .price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
-            margin: 0.5rem 0;
-        }
-
-        .btn-whatsapp-prod {
-            display: block;
-            background-color: var(--verde-whatsapp);
-            color: white;
-            text-decoration: none;
-            padding: 0.8rem 1.5rem;
-            font-weight: bold;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 1rem;
-            border: none;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .btn-whatsapp-prod:hover {
-            background-color: #1ebd56;
-        }
-
-        /* Sección B2B */
-        .b2b-box {
-            background: linear-gradient(135deg, #1f1a0f, #121212);
-            border: 1px solid var(--dorado-mezcal);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        .btn-whatsapp-b2b {
-            display: inline-block;
-            background-color: var(--dorado-mezcal);
-            color: var(--negro-fuego);
-            font-weight: bold;
-            padding: 0.8rem 1.8rem;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 1rem;
-        }
-
-        .btn-whatsapp-b2b:hover {
-            background-color: #f1c40f;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.85rem;
-            color: #777;
-            border-top: 1px solid #222;
-            margin-top: 3rem;
-        }
-    </style>
+    /* NOM-142 & FOOTER LEGAL */
+    .nom-banner {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+      margin-top: 50px;
+    }
+    footer {
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Mezcal Raíz del Fuego</h1>
-        <p class="tagline">Envío directo a tu domicilio en Toluca, Metepec y alrededores.</p>
-    </header>
-
-    <div class="container">
-        <h2 class="section-title">Nuestras Botellas</h2>
-        
-        <div class="products-grid">
-            <!-- Producto 1 -->
-            <div class="product-card">
-                <div>
-                    <h3>Mezcal Espadín Joven (750ml)</h3>
-                    <p>40% Alc. Vol. Notas herbales y humo suave. Perfecto para tomar derecho o coctelería fina.</p>
-                </div>
-                <div>
-                    <div class="price">$450 MXN</div>
-                    <button class="btn-whatsapp-prod" onclick="pedirProducto('Mezcal Espadín Joven 750ml', 450)">💬 Pedir por WhatsApp</button>
-                </div>
-            </div>
-
-            <!-- Producto 2 -->
-            <div class="product-card">
-                <div>
-                    <h3>Mezcal Tobalá Silvestre (750ml)</h3>
-                    <p>45% Alc. Vol. Edición limitada. Notas florales y aroma complejo de agaves maduros.</p>
-                </div>
-                <div>
-                    <div class="price">$850 MXN</div>
-                    <button class="btn-whatsapp-prod" onclick="pedirProducto('Mezcal Tobalá Silvestre 750ml', 850)">💬 Pedir por WhatsApp</button>
-                </div>
-            </div>
-
-            <!-- Producto 3 -->
-            <div class="product-card">
-                <div>
-                    <h3>Kit Degustación (3x200ml)</h3>
-                    <p>Incluye Espadín, Tobalá y Ensamble. Ideal para regalo o catas en casa.</p>
-                </div>
-                <div>
-                    <div class="price">$620 MXN</div>
-                    <button class="btn-whatsapp-prod" onclick="pedirProducto('Kit Degustación 3x200ml', 620)">💬 Pedir por WhatsApp</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sección Mayoristas / B2B -->
-        <div class="b2b-box">
-            <h2>¿Tienes un restaurante o bar en Toluca/Metepec?</h2>
-            <p>Manejamos precios de mayoreo, degustaciones sin costo para centros de consumo y atención personalizada.</p>
-            <a href="https://wa.me/5217220000000?text=Hola,%20me%20interesan%20precios%20de%20mayoreo%20para%20un%20restaurante/bar." class="btn-whatsapp-b2b" target="_blank">Contactar a Ventas B2B</a>
-        </div>
+  <!-- MODAL DE VERIFICACIÓN DE EDAD -->
+  <div id="age-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Verificación de Edad</h2>
+      <p>Debes ser mayor de edad para ingresar a este sitio y conocer nuestros productos artesanales.</p>
+      <p><strong>¿Tienes 18 años o más?</strong></p>
+      <div class="modal-buttons">
+        <button class="btn btn-yes" onclick="confirmAge(true)">Sí, soy mayor</button>
+        <button class="btn btn-no" onclick="confirmAge(false)">No</button>
+      </div>
     </div>
+  </div>
 
-    <footer>
-        <p>&copy; 2026 Mezcal Raíz del Fuego. Toluca - Metepec, Estado de México.</p>
-    </footer>
+  <!-- CONTENIDO PRINCIPAL -->
+  <header>
+    <h1>Mezcal Raíz del Fuego</h1>
+  </header>
 
-    <script>
-        function pedirProducto(producto, precio) {
-            // REEMPLAZA "5217220000000" POR TU NÚMERO DE WHATSAPP REAL (A 10 DÍGITOS CON LADA DE MÉXICO 521 O 52)
-            const telefono = "5217220000000"; 
-            const mensaje = `Hola, quiero comprar: ${producto} ($${precio} MXN). ¿Tienen entregas en mi zona?`;
-            const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-            window.open(url, '_blank');
-        }
-    </script>
+  <section class="hero">
+    <h2>El Espíritu Ancestral de Oaxaca</h2>
+    <p>100% Agave Espadín destilado con procesos tradicionales en alambique de cobre. Un mezcal de carácter, cuerpo y notas ahumadas únicas.</p>
+  </section>
+
+  <main class="product">
+    <div class="product-card">
+      <h3>Mezcal Artesanal Joven</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">45% Alc. Vol. | 750 ml</p>
+      <div class="product-price">$850 MXN</div>
+      <p>Edición limitada con notas florales, cítricas y el clásico ahumado del agave cocido en horno de piedra artesanal.</p>
+      <br>
+      <!-- REDIRECCIÓN DIRECTA A WHATSAPP -->
+      <a href="https://wa.me/5215500000000?text=Hola,%20me%20interesa%20comprar%20una%20botella%20de%20Mezcal%20Ra%C3%ADz%20del%20Fuego." target="_blank" class="btn btn-whatsapp">
+        Pedir por WhatsApp
+      </a>
+    </div>
+  </main>
+
+  <!-- LEYENDA LEGAL CONFORME A LA NOM-142-SSA1/SCFI-2014 -->
+  <div class="nom-banner">
+    EL ABUSO EN EL CONSUMO DE ESTE PRODUCTO ES NOCIVO PARA LA SALUD
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Mezcal Raíz del Fuego. Todos los derechos reservados.</p>
+    <p>Prohibida la venta a menores de 18 años. Consuma con responsabilidad.</p>
+  </footer>
+
+  <!-- SCRIPT PARA EL MODAL -->
+  <script>
+    function confirmAge(isAdult) {
+      if (isAdult) {
+        document.getElementById('age-modal').style.display = 'none';
+      } else {
+        alert('Lo sentimos, debes ser mayor de 18 años para acceder a este sitio.');
+        window.location.href = 'https://www.google.com';
+      }
+    }
+  </script>
 
 </body>
 </html>
