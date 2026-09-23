@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mezcal Raíz del Fuego | Oaxaca</title>
   <style>
-    /* ESTILOS GENERALES Y PALETA EN FONDO BLANCO */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ESTILOS GENERALES Y PALETA DE COLORES */
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
     :root {
       --bg-light: #ffffff;
-      --bg-card: #f9f9f9;
-      --primary-gold: #b8860b; /* Dorado más oscuro para resaltar sobre blanco */
+      --bg-card: #fbf9f5; /* Tono beige artesanal muy suave */
+      --primary-gold: #b8860b;
+      --gold-hover: #d4af37;
       --text-dark: #1a1a1a;
       --text-muted: #555555;
       --accent-red: #c0392b;
-      --border-color: #e0e0e0;
+      --border-color: #e5dfd3;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -23,221 +24,374 @@
       line-height: 1.6;
     }
 
-    /* LÓGICA DEL INTERRUPTOR DE MANTENIMIENTO */
-    body.modo-mantenimiento #vista-principal { display: none !important; }
-    body.modo-mantenimiento #vista-mantenimiento { display: flex !important; }
-
-    body:not(.modo-mantenimiento) #vista-mantenimiento { display: none !important; }
-    body:not(.modo-mantenimiento) #vista-principal { display: block; }
-
-    /* MANTENIMIENTO */
-    #vista-mantenimiento {
-      height: 100vh;
+    /* BARRA DE NAVEGACIÓN (NAVBAR) */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      border-bottom: 2px solid var(--primary-gold);
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-    .mantenimiento-card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--primary-gold);
-      padding: 40px;
-      border-radius: 8px;
-      max-width: 500px;
-      width: 100%;
+      padding: 15px 40px;
+      z-index: 1000;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
-    .mantenimiento-card h1 { color: var(--primary-gold); margin-bottom: 15px; font-size: 1.8rem; }
-    .status-tag {
-      display: inline-block;
-      padding: 8px 16px;
-      background: rgba(184, 134, 11, 0.1);
-      color: var(--primary-gold);
-      border-radius: 20px;
-      font-size: 0.9rem;
+    nav .logo {
+      font-size: 1.4rem;
       font-weight: bold;
+      color: var(--primary-gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: var(--primary-gold);
     }
 
-    /* MODAL (+18) */
+    /* MODAL DE EDAD (+18) */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
     }
     .modal-content {
-      background: var(--bg-light);
+      background: #ffffff;
       border: 2px solid var(--primary-gold);
       padding: 40px 30px;
       text-align: center;
-      border-radius: 8px;
-      max-width: 450px;
+      border-radius: 12px;
+      max-width: 460px;
       width: 90%;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
     }
-    .modal-content h2 { color: var(--primary-gold); margin-bottom: 15px; }
-    .modal-content p { color: var(--text-dark); }
+    .modal-content h2 { color: var(--primary-gold); margin-bottom: 12px; font-size: 1.8rem; }
+    .modal-content p { color: #2c2c2c !important; font-size: 1rem; line-height: 1.5; }
     .modal-buttons { margin-top: 25px; display: flex; gap: 15px; justify-content: center; }
     .btn {
       padding: 12px 24px;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       font-weight: bold;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
+      transition: transform 0.2s, background 0.3s;
     }
+    .btn:hover { transform: translateY(-2px); }
     .btn-yes { background: var(--primary-gold); color: #fff; }
     .btn-no { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); }
 
-    /* HEADER & HERO CON HIERVE EL AGUA VISIBLE */
-    header { padding: 20px; text-align: center; border-bottom: 1px solid var(--border-color); background: #fff; }
-    header h1 { color: var(--primary-gold); letter-spacing: 2px; text-transform: uppercase; }
-    
+    /* HERO SECCIÓN CON HIERVE EL AGUA VISIBLE */
     .hero {
-      padding: 100px 20px;
+      padding: 120px 20px;
       text-align: center;
-      /* Imagen nítida de Hierve el Agua sin sombras oscuras encima */
       background: url('https://upload.wikimedia.org/wikipedia/commons/4/43/HierveElAguaMexico1.jpg') center/cover no-repeat;
+      position: relative;
     }
     .hero-content-box {
-      background: rgba(255, 255, 255, 0.88); /* Caja semitransparente blanca para dar lectura clara */
+      background: rgba(255, 255, 255, 0.92);
       display: inline-block;
-      padding: 30px 40px;
-      border-radius: 8px;
-      border: 1px solid var(--primary-gold);
-      max-width: 700px;
+      padding: 40px 50px;
+      border-radius: 12px;
+      border: 2px solid var(--primary-gold);
+      max-width: 780px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
-    .hero h2 { font-size: 2.2rem; color: var(--primary-gold); margin-bottom: 10px; font-weight: bold; }
-    .hero p { color: var(--text-dark); font-size: 1.1rem; font-weight: 500; }
+    .hero h2 { font-size: 2.4rem; color: var(--primary-gold); margin-bottom: 12px; font-weight: bold; }
+    .hero p { color: var(--text-dark); font-size: 1.15rem; font-weight: 500; }
+
+    /* SECCIONES COMUNES Y TÍTULOS DECORADOS */
+    section { padding: 70px 20px; max-width: 1050px; margin: 0 auto; }
+    .section-title {
+      text-align: center;
+      font-size: 2.1rem;
+      color: var(--primary-gold);
+      margin-bottom: 35px;
+      position: relative;
+    }
+    .section-title::after {
+      content: '🔥';
+      display: block;
+      font-size: 1.2rem;
+      margin-top: 5px;
+    }
+
+    /* SOBRE NOSOTROS */
+    .about-box {
+      background: var(--bg-card);
+      padding: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+    .about-text { font-size: 1.15rem; color: #333; max-width: 850px; margin: 0 auto; line-height: 1.8; }
+
+    /* PROCESO ARTESANAL */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+    .process-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 30px 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .process-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-gold);
+    }
+    .process-icon { font-size: 2.5rem; margin-bottom: 15px; }
+    .process-card h4 { color: var(--primary-gold); margin-bottom: 10px; font-size: 1.25rem; }
+
+    /* MARIDAJE Y NOTAS DE CATA */
+    .tasting-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .tasting-card {
+      border: 1px solid var(--border-color);
+      padding: 25px;
+      border-radius: 10px;
+      background: #ffffff;
+      border-left: 4px solid var(--primary-gold);
+    }
+    .tasting-card h4 { color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 8px; }
 
     /* PRODUCTOS Y BOTELLAS */
-    .product-section {
-      max-width: 1000px;
-      margin: 50px auto;
-      padding: 0 20px;
-    }
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
       align-items: center;
     }
     .product-image-container img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border-color); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
     .product-card {
-      background: var(--bg-card);
-      border-radius: 8px;
-      padding: 30px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      background: var(--bg-card); border-radius: 10px; padding: 35px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.04);
     }
-    .product-card h3 { color: var(--primary-gold); font-size: 1.8rem; margin-bottom: 5px; }
+    .product-card h3 { color: var(--primary-gold); font-size: 1.9rem; margin-bottom: 5px; }
     .product-price { font-size: 1.8rem; color: var(--text-dark); margin: 15px 0; font-weight: bold; }
     .btn-whatsapp { 
-      background-color: #25d366; 
-      color: #fff; 
-      font-size: 1.1rem; 
-      width: 100%; 
-      text-align: center; 
-      padding: 12px;
-      border-radius: 6px;
-      display: block;
-      text-decoration: none;
+      background-color: #25d366; color: #fff; font-size: 1.1rem; width: 100%; text-align: center; padding: 14px; border-radius: 6px; display: block; text-decoration: none; font-weight: bold; transition: background 0.3s;
+    }
+    .btn-whatsapp:hover { background-color: #1eb954; }
+
+    /* BADGES DE ADVERTENCIA LEGAL (NOM) */
+    .legal-badges {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 30px 0 15px 0;
+    }
+    .badge-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
       font-weight: bold;
+    }
+    .badge-icon {
+      width: 45px;
+      height: 45px;
+      border: 2px solid #333;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      color: #333;
     }
 
+    /* BANNER OFICIAL NOM */
     .nom-banner {
-      background: #f0f0f0;
-      color: #333;
+      background: #111111;
+      color: #ffffff;
       text-align: center;
-      padding: 15px;
+      padding: 16px;
       font-weight: bold;
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-      margin-top: 50px;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin-top: 40px;
     }
-    footer { padding: 30px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); background: #fff; }
+    footer { padding: 35px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); background: #fff; }
+
+    @media (max-width: 768px) {
+      nav { flex-direction: column; gap: 12px; }
+      nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- VISTA DE MANTENIMIENTO -->
-  <div id="vista-mantenimiento">
-    <div class="mantenimiento-card">
-      <h1>Mezcal Raíz del Fuego</h1>
-      <p>Estamos realizando mejoras en nuestro sitio web para brindarte una mejor experiencia.</p>
-      <div class="status-tag">Sitio en Mantenimiento</div>
+  <!-- MODAL DE EDAD (+18) -->
+  <div id="age-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Verificación de Edad</h2>
+      <p>Debes ser mayor de edad para ingresar a este sitio y conocer nuestros productos artesanales.</p>
+      <p style="margin-top: 12px; font-weight: bold;">¿Tienes 18 años o más?</p>
+      <div class="modal-buttons">
+        <button class="btn btn-yes" onclick="confirmAge(true)">Sí, soy mayor</button>
+        <button class="btn btn-no" onclick="confirmAge(false)">No</button>
+      </div>
     </div>
   </div>
 
-  <!-- VISTA PRINCIPAL (SITIO EN VIVO) -->
-  <div id="vista-principal">
-    
-    <!-- MODAL DE EDAD (+18) -->
-    <div id="age-modal" class="modal-overlay">
-      <div class="modal-content">
-        <h2>Verificación de Edad</h2>
-        <p>Debes ser mayor de edad para ingresar a este sitio y conocer nuestros productos artesanales.</p>
-        <p style="margin-top: 10px;"><strong>¿Tienes 18 años o más?</strong></p>
-        <div class="modal-buttons">
-          <button class="btn btn-yes" onclick="confirmAge(true)">Sí, soy mayor</button>
-          <button class="btn btn-no" onclick="confirmAge(false)">No</button>
-        </div>
-      </div>
-    </div>
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav>
+    <div class="logo">🔥 Raíz del Fuego</div>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#maridaje">Notas de Cata</a></li>
+      <li><a href="#productos">Productos</a></li>
+    </ul>
+  </nav>
 
-    <header>
-      <h1>Mezcal Raíz del Fuego</h1>
-    </header>
-
-    <!-- HERO CON LA IMAGEN DE HIERVE EL AGUA COMPLETA -->
-    <section class="hero">
+  <!-- INICIO / HERO SECCIÓN -->
+  <div id="inicio">
+    <section class="hero" style="max-width: 100%; padding-left:0; padding-right:0;">
       <div class="hero-content-box">
         <h2>Nacido en las Montañas de Oaxaca</h2>
         <p>Inspirado en la mística de Hierve el Agua y el calor ancestral del horno de piedra. Un destilado donde la raíz se vuelve fuego.</p>
       </div>
     </section>
-
-    <!-- SECCIÓN CON LA FOTO DE TUS BOTELLAS -->
-    <main class="product-section">
-      <div class="product-grid">
-        <div class="product-image-container">
-          <img src="botellas.jpg" alt="Botellas de Mezcal Raíz del Fuego">
-        </div>
-        <div class="product-card">
-          <h3>Edición Artesanal Oaxaca</h3>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">45% Alc. Vol. | Lote Limitado 001/25</p>
-          <div class="product-price">1000 ml & 750 ml</div>
-          <p style="color: var(--text-dark);">Destilado de agave de carácter único, con notas herbales y el toque ahumado característico del suelo oaxaqueño.</p>
-          <br>
-          <a href="https://wa.me/5215500000000?text=Hola,%20me%20interesa%20comprar%20una%20botella%20de%20Mezcal%20Ra%C3%ADz%20del%20Fuego." target="_blank" class="btn btn-whatsapp">
-            Pedir por WhatsApp
-          </a>
-        </div>
-      </div>
-    </main>
-
-    <div class="nom-banner">
-      EL ABUSO EN EL CONSUMO DE ESTE PRODUCTO ES NOCIVO PARA LA SALUD
-    </div>
-
-    <footer>
-      <p>&copy; 2026 Mezcal Raíz del Fuego. Todos los derechos reservados.</p>
-      <p>Oaxaca, México. Prohibida la venta a menores de 18 años.</p>
-    </footer>
-
   </div>
+
+  <!-- SOBRE NOSOTROS -->
+  <section id="nosotros">
+    <h3 class="section-title">Nuestra Esencia</h3>
+    <div class="about-box">
+      <p class="about-text">
+        En <strong>Mezcal Raíz del Fuego</strong> honramos la tradición oaxaqueña seleccionando agaves maduros de las tierras altas de Oaxaca. Nuestro compromiso es preservar la pureza artesanal en cada lote, entregando una experiencia donde el humo, la tierra y el maguey convergen en perfecta armonía.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROCESO ARTESANAL -->
+  <section id="proceso">
+    <h3 class="section-title">Proceso 100% Artesanal</h3>
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="process-icon">🌵</div>
+        <h4>1. Cosecha</h4>
+        <p>Selección y jima manual de agaves Espadín maduros en valles oaxaqueños.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-icon">🪵</div>
+        <h4>2. Cocción</h4>
+        <p>Cocido lento durante 3 días en horno cónico de piedra bajo tierra con leña de encino.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-icon">🪨</div>
+        <h4>3. Molienda</h4>
+        <p>Molienda tradicional con tahona de piedra egipcia para extraer sus jugos puros.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-icon">🏺</div>
+        <h4>4. Destilación</h4>
+        <p>Doble destilación en alambique de cobre que conserva notas herbales y ahumadas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTAS DE CATA Y MARIDAJE -->
+  <section id="maridaje">
+    <h3 class="section-title">Notas de Cata & Maridaje</h3>
+    <div class="tasting-grid">
+      <div class="tasting-card">
+        <h4>👁️ Vista</h4>
+        <p>Limpio, brillante, con cuerpo medio y perleo fino al servir en mezcalero tradicional.</p>
+      </div>
+      <div class="tasting-card">
+        <h4>👃 Aroma</h4>
+        <p>Notas cítricas dulces, agave cocido, herbal fresco y un humo tenue muy elegante.</p>
+      </div>
+      <div class="tasting-card">
+        <h4>🍋 Maridaje Sugerido</h4>
+        <p>Acompaña con rodajas de naranja, sal de gusano de maguey, quesillo oaxaqueño o chocolate amargo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section id="productos">
+    <h3 class="section-title">Edición Especial</h3>
+    <div class="product-grid">
+      <div class="product-image-container">
+        <img src="botellas.jpg" alt="Botellas de Mezcal Raíz del Fuego">
+      </div>
+      <div class="product-card">
+        <h3>Espadín Artesanal Oaxaca</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">45% Alc. Vol. | Lote Limitado 001/25</p>
+        <div class="product-price">1000 ml & 750 ml</div>
+        <p style="color: var(--text-dark);">Destilado suave al paladar con carácter ahumado equilibrado. Ideal para disfrutar derecho o en coctelería de autor.</p>
+        <br>
+        <a href="https://wa.me/5215500000000?text=Hola,%20me%20interesa%20comprar%20una%20botella%20de%20Mezcal%20Ra%C3%ADz%20del%20Fuego." target="_blank" class="btn btn-whatsapp">
+          💬 Pedir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELLOS Y ADVERTENCIAS LEGALES (CUMPLIMIENTO DE LEY) -->
+  <div class="legal-badges">
+    <div class="badge-item">
+      <div class="badge-icon">+18</div>
+      <span>MAYORES DE EDAD</span>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon">🚗⛔</div>
+      <span>SI TOMAS NO MANEJES</span>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon">🤰⛔</div>
+      <span>EVITAR EN EMBARAZO</span>
+    </div>
+  </div>
+
+  <!-- BANNER OFICIAL SANITARIO -->
+  <div class="nom-banner">
+    EL ABUSO EN EL CONSUMO DE ESTE PRODUCTO ES NOCIVO PARA LA SALUD
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Mezcal Raíz del Fuego. Todos los derechos reservados.</p>
+    <p>Oaxaca, México. Prohibida la venta a menores de 18 años.</p>
+  </footer>
 
   <script>
     function confirmAge(isAdult) {
