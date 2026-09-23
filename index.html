@@ -27,7 +27,7 @@
       min-height: 100vh;
     }
 
-    /* BARRA DE NAVEGACIÓN PROFESIONAL */
+    /* BARRA DE NAVEGACIÓN PROFESIONAL CON MENÚ ADAPTATIVO */
     nav {
       position: sticky;
       top: 0;
@@ -48,6 +48,29 @@
       letter-spacing: 2px;
       cursor: pointer;
     }
+    
+    /* BOTÓN HAMBURGUESA (Oculto en escritorio) */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1001;
+    }
+    .menu-toggle span {
+      width: 100%;
+      height: 3px;
+      background-color: var(--primary-gold);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* LISTA DE NAVEGACIÓN EN ESCRITORIO */
     nav ul {
       display: flex;
       list-style: none;
@@ -65,6 +88,37 @@
     nav ul li a:hover, nav ul li a.active {
       color: var(--primary-gold);
       border-bottom: 2px solid var(--primary-gold);
+    }
+
+    /* MEDIA QUERY PARA DISPOSITIVOS MÓVILES (MENÚ HAMBURGUESA) */
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px 20px;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        border-bottom: 2px solid var(--primary-gold);
+        padding: 20px;
+        gap: 18px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      }
+      nav ul.mobile-open {
+        display: flex;
+      }
+      nav ul li a {
+        font-size: 1.1rem;
+        display: inline-block;
+      }
     }
 
     /* SISTEMA DE PÁGINAS INDEPENDIENTES */
@@ -115,29 +169,98 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      transition: transform 0.2s;
+      transition: transform 0.2s, background-color 0.3s;
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-yes { background: var(--primary-gold); color: #fff; }
+    .btn-yes:hover { background: var(--gold-hover); }
     .btn-no { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); }
 
-    /* ESTILOS CONTENIDO Y HERO */
+    /* HERO PRINCIPAL */
     .hero {
-      padding: 140px 20px;
+      padding: 130px 20px;
       text-align: center;
       background: url('https://upload.wikimedia.org/wikipedia/commons/4/43/HierveElAguaMexico1.jpg') center/cover no-repeat;
     }
     .hero-content-box {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.93);
       display: inline-block;
-      padding: 40px 50px;
+      padding: 45px 50px;
       border-radius: 12px;
       border: 2px solid var(--primary-gold);
-      max-width: 780px;
+      max-width: 800px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
-    .hero h2 { font-size: 2.4rem; color: var(--primary-gold); margin-bottom: 12px; font-weight: bold; }
+    .hero h2 { font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 12px; font-weight: bold; }
     .hero p { color: var(--text-dark); font-size: 1.15rem; font-weight: 500; }
+    
+    .hero-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* PILARES DESTACADOS EN INICIO */
+    .highlights-section {
+      padding: 60px 20px;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-top: 3px solid var(--primary-gold);
+      padding: 35px 25px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: transform 0.3s ease;
+    }
+    .highlight-card:hover {
+      transform: translateY(-5px);
+    }
+    .highlight-card h3 {
+      color: var(--primary-gold);
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+    .highlight-card p {
+      color: var(--text-dark);
+      font-size: 0.98rem;
+    }
+
+    /* FRASE DESTACADA / CITA */
+    .quote-banner {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .quote-content {
+      max-width: 750px;
+      margin: 0 auto;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--text-dark);
+    }
+    .quote-author {
+      display: block;
+      margin-top: 15px;
+      font-style: normal;
+      font-weight: bold;
+      color: var(--primary-gold);
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
 
     /* CONTENEDOR DE PÁGINAS INTERNAS */
     .container { padding: 60px 20px; max-width: 1050px; margin: 0 auto; }
@@ -158,14 +281,28 @@
     }
 
     /* PÁGINA SOBRE NOSOTROS */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      align-items: center;
+    }
+    .about-image img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
     .about-card {
       background: var(--bg-card);
-      padding: 45px;
+      padding: 35px;
       border-radius: 12px;
       border: 1px solid var(--border-color);
       box-shadow: 0 4px 15px rgba(0,0,0,0.03);
       line-height: 1.8;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
     .about-card h3 { color: var(--primary-gold); margin-bottom: 15px; font-size: 1.5rem; }
 
@@ -178,32 +315,67 @@
     .process-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      padding: 30px 20px;
       border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+    }
+    .process-img-box {
+      width: 100%;
+      height: 170px;
+      overflow: hidden;
+    }
+    .process-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .process-card:hover .process-img-box img {
+      transform: scale(1.05);
+    }
+    .process-body {
+      padding: 20px;
       text-align: center;
+      flex: 1;
     }
     .process-step-num {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: bold;
       color: var(--primary-gold);
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
-    .process-card h4 { color: var(--primary-gold); margin-bottom: 10px; font-size: 1.25rem; }
+    .process-card h4 { color: var(--primary-gold); margin-bottom: 8px; font-size: 1.2rem; }
 
     /* PÁGINA MARIDAJE Y CATA */
-    .tasting-grid {
+    .tasting-layout {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 35px;
+      align-items: center;
+    }
+    .tasting-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
     .tasting-card {
       border: 1px solid var(--border-color);
-      padding: 25px;
+      padding: 22px;
       border-radius: 10px;
       background: #ffffff;
       border-left: 4px solid var(--primary-gold);
     }
     .tasting-card h4 { color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 8px; }
+    .tasting-image img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
 
     /* PÁGINA PRODUCTOS */
     .product-grid {
@@ -266,11 +438,6 @@
       margin-top: auto;
     }
     footer { padding: 35px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); background: #fff; }
-
-    @media (max-width: 768px) {
-      nav { flex-direction: column; gap: 12px; }
-      nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
-    }
   </style>
 </head>
 
@@ -292,7 +459,15 @@
   <!-- BARRA DE NAVEGACIÓN -->
   <nav>
     <div class="logo" onclick="showPage('inicio')">Raíz del Fuego</div>
-    <ul>
+    
+    <!-- Botón de tres líneas (Hamburguesa) para móvil -->
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul id="nav-menu">
       <li><a id="nav-inicio" class="active" onclick="showPage('inicio')">Inicio</a></li>
       <li><a id="nav-nosotros" onclick="showPage('nosotros')">Sobre Nosotros</a></li>
       <li><a id="nav-proceso" onclick="showPage('proceso')">Proceso</a></li>
@@ -307,25 +482,58 @@
       <div class="hero-content-box">
         <h2>Nacido en las Montañas de Oaxaca</h2>
         <p>Inspirado en la mística de Hierve el Agua y el calor ancestral del horno de piedra. Un destilado donde la raíz se vuelve fuego.</p>
-        <br>
-        <button class="btn btn-yes" onclick="showPage('nosotros')">Conoce Nuestra Historia</button>
+        <div class="hero-buttons">
+          <button class="btn btn-yes" onclick="showPage('productos')">Ver Productos</button>
+          <button class="btn btn-yes" style="background: transparent; color: var(--primary-gold); border: 1px solid var(--primary-gold);" onclick="showPage('nosotros')">Nuestra Historia</button>
+        </div>
       </div>
     </section>
+
+    <!-- PILARES DESTACADOS -->
+    <section class="highlights-section">
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <h3>Origen Ancestral</h3>
+          <p>Producido en el corazón de Oaxaca, respetando la tierra y seleccionando agaves maduros de primera calidad.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Cocción Tradicional</h3>
+          <p>Cocido bajo tierra en horno cónico de piedra con leña de encino para obtener un carácter suave y ahumado.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Lotes Limitados</h3>
+          <p>Cada botella es envasada de origen y numerada para garantizar la autenticidad y pureza del destilado.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANNER DE FRASE DESTACADA -->
+    <div class="quote-banner">
+      <div class="quote-content">
+        "El mezcal no se bebe de golpe, se toma a besos y se honra con el corazón."
+        <span class="quote-author">Maestros Mezcaleros de Oaxaca</span>
+      </div>
+    </div>
   </div>
 
   <!-- PÁGINA 2: SOBRE NOSOTROS -->
   <div id="page-nosotros" class="page-section">
     <div class="container">
       <h2 class="page-title">Sobre Nosotros</h2>
-      <div class="about-card">
-        <h3>Nuestra Tradición Ancestral</h3>
-        <p>
-          En <strong>Mezcal Raíz del Fuego</strong> honramos la herencia oaxaqueña seleccionando agaves maduros cultivados con cuidado en las tierras altas de Oaxaca. 
-        </p>
-        <br>
-        <p>
-          Nuestra misión es llevar a tu copa la mística, el fuego y la devoción de nuestros maestros mezcaleros, respetando los tiempos naturales de la tierra y los procesos 100% artesanales sin acelerantes ni aditivos químicos.
-        </p>
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="https://foodandpleasure.com/wp-content/uploads/2021/04/palenques-mezcaleros-oaxaca-graciasadiosmezcal3.jpg" alt="Campo de agave en Oaxaca">
+        </div>
+        <div class="about-card">
+          <h3>Nuestra Tradición Ancestral</h3>
+          <p>
+            En <strong>Mezcal Raíz del Fuego</strong> honramos la herencia oaxaqueña seleccionando agaves maduros cultivados con cuidado en las tierras altas de Oaxaca. 
+          </p>
+          <br>
+          <p>
+            Nuestra misión es llevar a tu copa la mística, el fuego y la devoción de nuestros maestros mezcaleros, respetando los tiempos naturales de la tierra y los procesos 100% artesanales sin acelerantes ni aditivos químicos.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -336,24 +544,44 @@
       <h2 class="page-title">Proceso 100% Artesanal</h2>
       <div class="process-grid">
         <div class="process-card">
-          <div class="process-step-num">01</div>
-          <h4>Cosecha</h4>
-          <p>Selección y jima manual de agaves Espadín maduros en valles oaxaqueños.</p>
+          <div class="process-img-box">
+            <img src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?q=80&w=600&auto=format&fit=crop" alt="Cosecha de Agave">
+          </div>
+          <div class="process-body">
+            <div class="process-step-num">01</div>
+            <h4>Cosecha</h4>
+            <p>Selección y jima manual de agaves Espadín maduros en valles oaxaqueños.</p>
+          </div>
         </div>
         <div class="process-card">
-          <div class="process-step-num">02</div>
-          <h4>Cocción</h4>
-          <p>Cocido lento durante 3 días en horno cónico de piedra bajo tierra con leña de encino.</p>
+          <div class="process-img-box">
+            <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1714013908762529" alt="Cocción en Horno de Piedra">
+          </div>
+          <div class="process-body">
+            <div class="process-step-num">02</div>
+            <h4>Cocción</h4>
+            <p>Cocido lento durante 3 días en horno cónico de piedra bajo tierra con leña de encino.</p>
+          </div>
         </div>
         <div class="process-card">
-          <div class="process-step-num">03</div>
-          <h4>Molienda</h4>
-          <p>Molienda tradicional con tahona de piedra egipcia para extraer sus jugos puros.</p>
+          <div class="process-img-box">
+            <img src="https://www.casasauza.com/hs-fs/hubfs/Blog_Procesos/tahona%20maquina.jpeg?width=600&name=tahona%20maquina.jpeg" alt="Molienda en Tahona de Piedra">
+          </div>
+          <div class="process-body">
+            <div class="process-step-num">03</div>
+            <h4>Molienda</h4>
+            <p>Molienda tradicional con tahona de piedra egipcia para extraer sus jugos puros.</p>
+          </div>
         </div>
         <div class="process-card">
-          <div class="process-step-num">04</div>
-          <h4>Destilación</h4>
-          <p>Doble destilación en alambique de cobre que conserva notas herbales y ahumadas.</p>
+          <div class="process-img-box">
+            <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1216173469172044" alt="Destilación en Alambique de Cobre">
+          </div>
+          <div class="process-body">
+            <div class="process-step-num">04</div>
+            <h4>Destilación</h4>
+            <p>Doble destilación en alambique de cobre que conserva notas herbales y ahumadas.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -363,18 +591,23 @@
   <div id="page-maridaje" class="page-section">
     <div class="container">
       <h2 class="page-title">Notas de Cata y Maridaje</h2>
-      <div class="tasting-grid">
-        <div class="tasting-card">
-          <h4>Vista</h4>
-          <p>Limpio, brillante, con cuerpo medio y perleo fino al servir en mezcalero tradicional.</p>
+      <div class="tasting-layout">
+        <div class="tasting-grid">
+          <div class="tasting-card">
+            <h4>Vista</h4>
+            <p>Limpio, brillante, con cuerpo medio y perleo fino al servir en mezcalero tradicional.</p>
+          </div>
+          <div class="tasting-card">
+            <h4>Aroma</h4>
+            <p>Notas cítricas dulces, agave cocido, herbal fresco y un humo tenue muy elegante.</p>
+          </div>
+          <div class="tasting-card">
+            <h4>Maridaje Sugerido</h4>
+            <p>Acompaña con rodajas de naranja, sal de gusano de maguey, quesillo oaxaqueño o chocolate amargo.</p>
+          </div>
         </div>
-        <div class="tasting-card">
-          <h4>Aroma</h4>
-          <p>Notas cítricas dulces, agave cocido, herbal fresco y un humo tenue muy elegante.</p>
-        </div>
-        <div class="tasting-card">
-          <h4>Maridaje Sugerido</h4>
-          <p>Acompaña con rodajas de naranja, sal de gusano de maguey, quesillo oaxaqueño o chocolate amargo.</p>
+        <div class="tasting-image">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Mezcal_con_naranja_y_sal_de_gusano.jpg" alt="Servicio tradicional de Mezcal con Naranja y Sal de Gusano">
         </div>
       </div>
     </div>
@@ -430,6 +663,14 @@
   </footer>
 
   <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    // Alternar menú hamburguesa al hacer clic
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('mobile-open');
+    });
+
     function showPage(pageId) {
       const pages = document.querySelectorAll('.page-section');
       pages.forEach(page => page.classList.remove('active-page'));
@@ -439,6 +680,9 @@
 
       document.getElementById('page-' + pageId).classList.add('active-page');
       document.getElementById('nav-' + pageId).classList.add('active');
+
+      // Cerrar menú móvil si está abierto tras seleccionar una opción
+      navMenu.classList.remove('mobile-open');
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
