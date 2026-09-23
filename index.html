@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mezcal Raíz del Fuego | Oaxaca</title>
   <style>
-    /* ESTILOS GENERALES Y PALETA OAXAQUEÑA */
+    /* ESTILOS GENERALES Y PALETA EN FONDO BLANCO */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg-light: #e6e6e6;
-      --bg-card: #f2eeec;
-      --primary-gold: #d4af37;
-      --earth-sand: #c2a688;
-      --text-light: #f5f5f5;
-      --text-muted: #a0988e;
+      --bg-light: #ffffff;
+      --bg-card: #f9f9f9;
+      --primary-gold: #b8860b; /* Dorado más oscuro para resaltar sobre blanco */
+      --text-dark: #1a1a1a;
+      --text-muted: #555555;
       --accent-red: #c0392b;
+      --border-color: #e0e0e0;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-light);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
       line-height: 1.6;
     }
 
@@ -46,12 +46,13 @@
       border-radius: 8px;
       max-width: 500px;
       width: 100%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
     .mantenimiento-card h1 { color: var(--primary-gold); margin-bottom: 15px; font-size: 1.8rem; }
     .status-tag {
       display: inline-block;
       padding: 8px 16px;
-      background: rgba(212, 175, 55, 0.1);
+      background: rgba(184, 134, 11, 0.1);
       color: var(--primary-gold);
       border-radius: 20px;
       font-size: 0.9rem;
@@ -62,22 +63,24 @@
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 0, 0.7);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
     }
     .modal-content {
-      background: var(--bg-card);
-      border: 1px solid var(--primary-gold);
+      background: var(--bg-light);
+      border: 2px solid var(--primary-gold);
       padding: 40px 30px;
       text-align: center;
       border-radius: 8px;
       max-width: 450px;
       width: 90%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
     .modal-content h2 { color: var(--primary-gold); margin-bottom: 15px; }
+    .modal-content p { color: var(--text-dark); }
     .modal-buttons { margin-top: 25px; display: flex; gap: 15px; justify-content: center; }
     .btn {
       padding: 12px 24px;
@@ -88,21 +91,29 @@
       text-decoration: none;
       display: inline-block;
     }
-    .btn-yes { background: var(--primary-gold); color: #000; }
+    .btn-yes { background: var(--primary-gold); color: #fff; }
     .btn-no { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); }
 
-    /* HEADER & HERO CON HIERVE EL AGUA */
-    header { padding: 20px; text-align: center; border-bottom: 1px solid #332b24; }
+    /* HEADER & HERO CON HIERVE EL AGUA VISIBLE */
+    header { padding: 20px; text-align: center; border-bottom: 1px solid var(--border-color); background: #fff; }
     header h1 { color: var(--primary-gold); letter-spacing: 2px; text-transform: uppercase; }
     
     .hero {
-      padding: 80px 20px;
+      padding: 100px 20px;
       text-align: center;
-      background: linear-gradient(rgba(18, 16, 14, 0.75), rgba(18, 16, 14, 0.85)), 
-                  url('https://upload.wikimedia.org/wikipedia/commons/4/43/HierveElAguaMexico1.jpg') center/cover no-repeat;
+      /* Imagen nítida de Hierve el Agua sin sombras oscuras encima */
+      background: url('https://upload.wikimedia.org/wikipedia/commons/4/43/HierveElAguaMexico1.jpg') center/cover no-repeat;
     }
-    .hero h2 { font-size: 2.2rem; color: var(--primary-gold); margin-bottom: 10px; }
-    .hero p { max-width: 650px; margin: 0 auto; color: #e0d8cf; font-size: 1.1rem; }
+    .hero-content-box {
+      background: rgba(255, 255, 255, 0.88); /* Caja semitransparente blanca para dar lectura clara */
+      display: inline-block;
+      padding: 30px 40px;
+      border-radius: 8px;
+      border: 1px solid var(--primary-gold);
+      max-width: 700px;
+    }
+    .hero h2 { font-size: 2.2rem; color: var(--primary-gold); margin-bottom: 10px; font-weight: bold; }
+    .hero p { color: var(--text-dark); font-size: 1.1rem; font-weight: 500; }
 
     /* PRODUCTOS Y BOTELLAS */
     .product-section {
@@ -120,30 +131,42 @@
       width: 100%;
       height: auto;
       border-radius: 8px;
-      border: 1px solid #332b24;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
     .product-card {
       background: var(--bg-card);
       border-radius: 8px;
       padding: 30px;
-      border: 1px solid #332b24;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
-    .product-card h3 { color: var(--primary-gold); font-size: 1.5rem; }
-    .product-price { font-size: 1.8rem; color: var(--earth-sand); margin: 15px 0; font-weight: bold; }
-    .btn-whatsapp { background-color: #25d366; color: #fff; font-size: 1.1rem; width: 100%; text-align: center; }
+    .product-card h3 { color: var(--primary-gold); font-size: 1.8rem; margin-bottom: 5px; }
+    .product-price { font-size: 1.8rem; color: var(--text-dark); margin: 15px 0; font-weight: bold; }
+    .btn-whatsapp { 
+      background-color: #25d366; 
+      color: #fff; 
+      font-size: 1.1rem; 
+      width: 100%; 
+      text-align: center; 
+      padding: 12px;
+      border-radius: 6px;
+      display: block;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
     .nom-banner {
-      background: #000;
-      color: #fff;
+      background: #f0f0f0;
+      color: #333;
       text-align: center;
       padding: 15px;
       font-weight: bold;
-      border-top: 1px solid #332b24;
-      border-bottom: 1px solid #332b24;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
       margin-top: 50px;
     }
-    footer { padding: 30px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+    footer { padding: 30px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); background: #fff; }
   </style>
 </head>
 
@@ -166,7 +189,7 @@
       <div class="modal-content">
         <h2>Verificación de Edad</h2>
         <p>Debes ser mayor de edad para ingresar a este sitio y conocer nuestros productos artesanales.</p>
-        <p><strong>¿Tienes 18 años o más?</strong></p>
+        <p style="margin-top: 10px;"><strong>¿Tienes 18 años o más?</strong></p>
         <div class="modal-buttons">
           <button class="btn btn-yes" onclick="confirmAge(true)">Sí, soy mayor</button>
           <button class="btn btn-no" onclick="confirmAge(false)">No</button>
@@ -178,24 +201,25 @@
       <h1>Mezcal Raíz del Fuego</h1>
     </header>
 
-    <!-- HERO CON INSPIRACIÓN EN HIERVE EL AGUA -->
+    <!-- HERO CON LA IMAGEN DE HIERVE EL AGUA COMPLETA -->
     <section class="hero">
-      <h2>Nacido en las Montañas de Oaxaca</h2>
-      <p>Inspirado en la mística de Hierve el Agua y el calor ancestral del horno de piedra. Un destilado donde la raíz se vuelve fuego.</p>
+      <div class="hero-content-box">
+        <h2>Nacido en las Montañas de Oaxaca</h2>
+        <p>Inspirado en la mística de Hierve el Agua y el calor ancestral del horno de piedra. Un destilado donde la raíz se vuelve fuego.</p>
+      </div>
     </section>
 
     <!-- SECCIÓN CON LA FOTO DE TUS BOTELLAS -->
     <main class="product-section">
       <div class="product-grid">
         <div class="product-image-container">
-          <!-- CORREGIDO: Se ajustó a "botellas.jpg" en plural -->
           <img src="botellas.jpg" alt="Botellas de Mezcal Raíz del Fuego">
         </div>
         <div class="product-card">
           <h3>Edición Artesanal Oaxaca</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem;">45% Alc. Vol. | Lote Limitado 001/25</p>
           <div class="product-price">1000 ml & 750 ml</div>
-          <p>Destilado de agave de carácter único, con notas herbales y el toque ahumado característico del suelo oaxaqueño.</p>
+          <p style="color: var(--text-dark);">Destilado de agave de carácter único, con notas herbales y el toque ahumado característico del suelo oaxaqueño.</p>
           <br>
           <a href="https://wa.me/5215500000000?text=Hola,%20me%20interesa%20comprar%20una%20botella%20de%20Mezcal%20Ra%C3%ADz%20del%20Fuego." target="_blank" class="btn btn-whatsapp">
             Pedir por WhatsApp
