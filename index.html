@@ -27,7 +27,7 @@
       min-height: 100vh;
     }
 
-    /* BARRA DE NAVEGACIÓN PROFESIONAL CON MENÚ ADAPTATIVO */
+    /* BARRA DE NAVEGACIÓN PROFESIONAL */
     nav {
       position: sticky;
       top: 0;
@@ -49,7 +49,6 @@
       cursor: pointer;
     }
     
-    /* BOTÓN HAMBURGUESA */
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -70,7 +69,6 @@
       transition: all 0.3s ease;
     }
 
-    /* LISTA DE NAVEGACIÓN EN ESCRITORIO */
     nav ul {
       display: flex;
       list-style: none;
@@ -90,20 +88,14 @@
       border-bottom: 2px solid var(--primary-gold);
     }
 
-    /* ADAPTATIVO PARA MÓVILES */
     @media (max-width: 768px) {
-      nav {
-        padding: 15px 20px;
-      }
-      .menu-toggle {
-        display: flex;
-      }
+      nav { padding: 15px 20px; }
+      .menu-toggle { display: flex; }
       nav ul {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 100%;
-        left: 0;
+        top: 100%; left: 0;
         width: 100%;
         background: #ffffff;
         border-bottom: 2px solid var(--primary-gold);
@@ -112,24 +104,17 @@
         text-align: center;
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       }
-      nav ul.mobile-open {
-        display: flex;
-      }
-      nav ul li a {
-        font-size: 1.1rem;
-        display: inline-block;
-      }
+      nav ul.mobile-open { display: flex; }
+      nav ul li a { font-size: 1.1rem; display: inline-block; }
     }
 
-    /* SISTEMA DE PÁGINAS INDEPENDIENTES */
+    /* SISTEMA DE PÁGINAS */
     .page-section {
       display: none;
       flex: 1;
       animation: fadeIn 0.4s ease-in-out;
     }
-    .page-section.active-page {
-      display: block;
-    }
+    .page-section.active-page { display: block; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
@@ -176,11 +161,11 @@
     .btn-yes:hover { background: var(--gold-hover); }
     .btn-no { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); }
 
-    /* HERO PRINCIPAL (IMAGEN DE HIERVE EL AGUA) */
+    /* HERO PRINCIPAL CON EL NUEVO ESLOGAN */
     .hero {
       padding: 130px 20px;
       text-align: center;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/4/43/HierveElAguaMexico1.jpg') center/cover no-repeat;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Agave_field_in_Oaxaca.jpg') center/cover no-repeat;
     }
     .hero-content-box {
       background: rgba(255, 255, 255, 0.93);
@@ -192,27 +177,12 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
     .hero h2 { font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 12px; font-weight: bold; }
-    .hero p { color: var(--text-dark); font-size: 1.15rem; font-weight: 500; }
-    
-    .hero-buttons {
-      margin-top: 20px;
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .hero p { color: var(--text-dark); font-size: 1.25rem; font-weight: 600; font-style: italic; }
+    .hero-buttons { margin-top: 20px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 
-    /* PILARES DESTACADOS EN INICIO */
-    .highlights-section {
-      padding: 60px 20px;
-      max-width: 1050px;
-      margin: 0 auto;
-    }
-    .highlights-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
+    /* SECCIONES Y PILARES */
+    .highlights-section { padding: 60px 20px; max-width: 1050px; margin: 0 auto; }
+    .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
     .highlight-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -223,20 +193,9 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.02);
       transition: transform 0.3s ease;
     }
-    .highlight-card:hover {
-      transform: translateY(-5px);
-    }
-    .highlight-card h3 {
-      color: var(--primary-gold);
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-    }
-    .highlight-card p {
-      color: var(--text-dark);
-      font-size: 0.98rem;
-    }
+    .highlight-card:hover { transform: translateY(-5px); }
+    .highlight-card h3 { color: var(--primary-gold); font-size: 1.3rem; margin-bottom: 12px; }
 
-    /* FRASE DESTACADA / CITA */
     .quote-banner {
       background: var(--bg-card);
       border-top: 1px solid var(--border-color);
@@ -244,74 +203,20 @@
       padding: 50px 20px;
       text-align: center;
     }
-    .quote-content {
-      max-width: 750px;
-      margin: 0 auto;
-      font-style: italic;
-      font-size: 1.25rem;
-      color: var(--text-dark);
-    }
-    .quote-author {
-      display: block;
-      margin-top: 15px;
-      font-style: normal;
-      font-weight: bold;
-      color: var(--primary-gold);
-      font-size: 0.95rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
+    .quote-content { max-width: 750px; margin: 0 auto; font-style: italic; font-size: 1.25rem; color: var(--text-dark); }
+    .quote-author { display: block; margin-top: 15px; font-style: normal; font-weight: bold; color: var(--primary-gold); font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; }
 
-    /* CONTENEDOR DE PÁGINAS INTERNAS */
     .container { padding: 60px 20px; max-width: 1050px; margin: 0 auto; }
-    .page-title {
-      text-align: center;
-      font-size: 2.3rem;
-      color: var(--primary-gold);
-      margin-bottom: 35px;
-      position: relative;
-    }
-    .page-title::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 2px;
-      background: var(--primary-gold);
-      margin: 10px auto 0;
-    }
+    .page-title { text-align: center; font-size: 2.3rem; color: var(--primary-gold); margin-bottom: 35px; position: relative; }
+    .page-title::after { content: ''; display: block; width: 60px; height: 2px; background: var(--primary-gold); margin: 10px auto 0; }
 
-    /* PÁGINA SOBRE NOSOTROS */
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 35px;
-      align-items: center;
-    }
-    .about-image img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
-    .about-card {
-      background: var(--bg-card);
-      padding: 35px;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-      line-height: 1.8;
-      font-size: 1.05rem;
-    }
+    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; align-items: center; }
+    .about-image img { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+    .about-card { background: var(--bg-card); padding: 35px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); line-height: 1.8; font-size: 1.05rem; }
     .about-card h3 { color: var(--primary-gold); margin-bottom: 15px; font-size: 1.5rem; }
 
-    /* PÁGINA PROCESO ARTESANAL */
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
+    /* CARDS DEL PROCESO ARTESANAL */
+    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
     .process-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -321,122 +226,31 @@
       display: flex;
       flex-direction: column;
     }
-    .process-img-box {
-      width: 100%;
-      height: 180px;
-      overflow: hidden;
-    }
-    .process-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    .process-card:hover .process-img-box img {
-      transform: scale(1.05);
-    }
-    .process-body {
-      padding: 20px;
-      text-align: center;
-      flex: 1;
-    }
-    .process-step-num {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: var(--primary-gold);
-      margin-bottom: 5px;
-    }
+    .process-img-box { width: 100%; height: 180px; overflow: hidden; }
+    .process-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+    .process-card:hover .process-img-box img { transform: scale(1.05); }
+    .process-body { padding: 20px; text-align: center; flex: 1; }
+    .process-step-num { font-size: 1.3rem; font-weight: bold; color: var(--primary-gold); margin-bottom: 5px; }
     .process-card h4 { color: var(--primary-gold); margin-bottom: 8px; font-size: 1.2rem; }
 
-    /* PÁGINA MARIDAJE Y CATA */
-    .tasting-layout {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 35px;
-      align-items: center;
-    }
-    .tasting-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .tasting-card {
-      border: 1px solid var(--border-color);
-      padding: 22px;
-      border-radius: 10px;
-      background: #ffffff;
-      border-left: 4px solid var(--primary-gold);
-    }
+    .tasting-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; align-items: center; }
+    .tasting-grid { display: flex; flex-direction: column; gap: 20px; }
+    .tasting-card { border: 1px solid var(--border-color); padding: 22px; border-radius: 10px; background: #ffffff; border-left: 4px solid var(--primary-gold); }
     .tasting-card h4 { color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 8px; }
-    .tasting-image img {
-      width: 100%;
-      height: 380px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
+    .tasting-image img { width: 100%; height: 380px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
 
-    /* PÁGINA PRODUCTOS */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 35px;
-      align-items: center;
-    }
-    .product-image-container img {
-      width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border-color); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    .product-card {
-      background: var(--bg-card); border-radius: 10px; padding: 35px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-    }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; align-items: center; }
+    .product-image-container img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border-color); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .product-card { background: var(--bg-card); border-radius: 10px; padding: 35px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
     .product-card h3 { color: var(--primary-gold); font-size: 1.9rem; margin-bottom: 5px; }
     .product-price { font-size: 1.8rem; color: var(--text-dark); margin: 15px 0; font-weight: bold; }
-    .btn-whatsapp { 
-      background-color: #25d366; color: #fff; font-size: 1.1rem; width: 100%; text-align: center; padding: 14px; border-radius: 6px; display: block; text-decoration: none; font-weight: bold;
-    }
+    .btn-whatsapp { background-color: #25d366; color: #fff; font-size: 1.1rem; width: 100%; text-align: center; padding: 14px; border-radius: 6px; display: block; text-decoration: none; font-weight: bold; }
 
-    /* BADGES DE ADVERTENCIA LEGAL */
-    .legal-badges {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin: 40px 0 15px 0;
-    }
-    .badge-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-weight: bold;
-    }
-    .badge-icon {
-      width: 45px;
-      height: 45px;
-      border: 2px solid #333;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      margin-bottom: 5px;
-      color: #333;
-      font-weight: bold;
-    }
+    .legal-badges { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin: 40px 0 15px 0; }
+    .badge-item { display: flex; flex-direction: column; align-items: center; font-size: 0.8rem; color: var(--text-muted); font-weight: bold; }
+    .badge-icon { width: 45px; height: 45px; border: 2px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; margin-bottom: 5px; color: #333; font-weight: bold; }
 
-    /* BANNER OFICIAL NOM */
-    .nom-banner {
-      background: #111111;
-      color: #ffffff;
-      text-align: center;
-      padding: 16px;
-      font-weight: bold;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      margin-top: auto;
-    }
+    .nom-banner { background: #111111; color: #ffffff; text-align: center; padding: 16px; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; margin-top: auto; }
     footer { padding: 35px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); background: #fff; }
   </style>
 </head>
@@ -456,14 +270,12 @@
     </div>
   </div>
 
-  <!-- BARRA DE NAVEGACIÓN -->
+  <!-- NAVEGACIÓN -->
   <nav>
     <div class="logo" onclick="showPage('inicio')">Mayahuel</div>
     
     <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
 
     <ul id="nav-menu">
@@ -479,8 +291,9 @@
   <div id="page-inicio" class="page-section active-page">
     <section class="hero">
       <div class="hero-content-box">
-        <h2>Elixir Sagrado Nacido en Oaxaca</h2>
-        <p>Inspirado en la mística de la diosa Mayahuel y el fuego del agave. Un destilado ancestral donde la tradición renace en cada gota.</p>
+        <h2>Mezcal Mayahuel</h2>
+        <!-- ESLOGAN ACTUALIZADO -->
+        <p>"Donde la raíz se vuelve fuego"</p>
         <div class="hero-buttons">
           <button class="btn btn-yes" onclick="showPage('productos')">Ver Productos</button>
           <button class="btn btn-yes" style="background: transparent; color: var(--primary-gold); border: 1px solid var(--primary-gold);" onclick="showPage('nosotros')">Nuestra Leyenda</button>
@@ -488,7 +301,6 @@
       </div>
     </section>
 
-    <!-- PILARES DESTACADOS -->
     <section class="highlights-section">
       <div class="highlights-grid">
         <div class="highlight-card">
@@ -506,7 +318,6 @@
       </div>
     </section>
 
-    <!-- BANNER DE FRASE DESTACADA -->
     <div class="quote-banner">
       <div class="quote-content">
         "El mezcal no se bebe de golpe, se toma a besos y se honra con el corazón."
@@ -521,33 +332,28 @@
       <h2 class="page-title">Sobre Mayahuel</h2>
       <div class="about-grid">
         <div class="about-image">
-          <!-- IMAGEN REAL: Campo de agaves para mezcal -->
           <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Agave_field_in_Oaxaca.jpg" alt="Campo de Agaves en Oaxaca">
         </div>
         <div class="about-card">
           <h3>Nuestra Herencia y Devoción</h3>
-          <p>
-            En <strong>Mezcal Mayahuel</strong> rendimos tributo a la diosa del agave y la fertilidad. Seleccionamos agaves maduros cultivados con cuidado en las tierras altas oaxaqueñas.
-          </p>
+          <p>En <strong>Mezcal Mayahuel</strong> rendimos tributo a la diosa del agave y la fertilidad. Seleccionamos agaves maduros cultivados con cuidado en las tierras altas oaxaqueñas.</p>
           <br>
-          <p>
-            Nuestra misión es llevar a tu copa un destilado que honra los métodos tradicionales sin acelerantes ni aditivos químicos, conservando intacta la esencia ancestral del mezcal artesanal.
-          </p>
+          <p>Nuestra misión es llevar a tu copa un destilado que honra los métodos tradicionales sin acelerantes ni aditivos químicos, conservando intacta la esencia ancestral del mezcal artesanal.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- PÁGINA 3: PROCESO ARTESANAL -->
+  <!-- PÁGINA 3: PROCESO ARTESANAL (IMÁGENES CORREGIDAS Y REALES) -->
   <div id="page-proceso" class="page-section">
     <div class="container">
       <h2 class="page-title">Proceso de Elaboración Artesanal</h2>
       <div class="process-grid">
+        
         <!-- 01 JIMA -->
         <div class="process-card">
           <div class="process-img-box">
-            <!-- IMAGEN REAL: Jimador o piña de agave pelada -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Agave_pinas.jpg/800px-Agave_pinas.jpg" alt="Jima del agave para extraer las piñas">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Agave_pinas.jpg/800px-Agave_pinas.jpg" alt="Jima del agave para obtener las piñas">
           </div>
           <div class="process-body">
             <div class="process-step-num">01</div>
@@ -559,8 +365,7 @@
         <!-- 02 COCCIÓN -->
         <div class="process-card">
           <div class="process-img-box">
-            <!-- IMAGEN REAL: Horno cónico de piedra bajo tierra -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Horno_conico_mezcal.jpg/800px-Horno_conico_mezcal.jpg" alt="Cocción de piñas en horno cónico bajo tierra">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Horno_conico_mezcal.jpg/800px-Horno_conico_mezcal.jpg" alt="Cocción en horno cónico bajo tierra">
           </div>
           <div class="process-body">
             <div class="process-step-num">02</div>
@@ -572,8 +377,7 @@
         <!-- 03 MOLIENDA -->
         <div class="process-card">
           <div class="process-img-box">
-            <!-- IMAGEN REAL: Tahona de piedra tradicional triturando agave -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Tahona_Mezcal.jpg/800px-Tahona_Mezcal.jpg" alt="Molienda de agave en tahona tradicional">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Tahona_Mezcal.jpg/800px-Tahona_Mezcal.jpg" alt="Molienda en tahona de piedra">
           </div>
           <div class="process-body">
             <div class="process-step-num">03</div>
@@ -585,7 +389,6 @@
         <!-- 04 DESTILACIÓN -->
         <div class="process-card">
           <div class="process-img-box">
-            <!-- IMAGEN REAL: Alambique de cobre auténtico -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Alambique_Mezcal_Oaxaca.jpg/800px-Alambique_Mezcal_Oaxaca.jpg" alt="Destilación en alambique de cobre">
           </div>
           <div class="process-body">
@@ -594,11 +397,12 @@
             <p>Doble destilación en alambique de cobre que otorga suavidad y preserva aromas herbales y ahumados.</p>
           </div>
         </div>
+
       </div>
     </div>
   </div>
 
-  <!-- PÁGINA 4: NOTAS DE CATA Y MARIDAJE -->
+  <!-- PÁGINA 4: MARIDAJE Y CATA -->
   <div id="page-maridaje" class="page-section">
     <div class="container">
       <h2 class="page-title">Notas de Cata y Maridaje</h2>
@@ -618,8 +422,7 @@
           </div>
         </div>
         <div class="tasting-image">
-          <!-- IMAGEN REAL: Vaso con mezcal y rodaja de naranja tradicional -->
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Mezcal_with_orange_slice.jpg/800px-Mezcal_with_orange_slice.jpg" alt="Servicio tradicional de Mezcal Mayahuel">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Mezcal_with_orange_slice.jpg/800px-Mezcal_with_orange_slice.jpg" alt="Mezcal con naranja y sal de gusano">
         </div>
       </div>
     </div>
@@ -647,23 +450,14 @@
     </div>
   </div>
 
-  <!-- SELLOS Y ADVERTENCIAS LEGALES -->
+  <!-- SELLOS -->
   <div class="legal-badges">
-    <div class="badge-item">
-      <div class="badge-icon">+18</div>
-      <span>MAYORES DE EDAD</span>
-    </div>
-    <div class="badge-item">
-      <div class="badge-icon">18+</div>
-      <span>SI TOMAS NO MANEJES</span>
-    </div>
-    <div class="badge-item">
-      <div class="badge-icon">NOM</div>
-      <span>EVITAR EN EMBARAZO</span>
-    </div>
+    <div class="badge-item"><div class="badge-icon">+18</div><span>MAYORES DE EDAD</span></div>
+    <div class="badge-item"><div class="badge-icon">18+</div><span>SI TOMAS NO MANEJES</span></div>
+    <div class="badge-item"><div class="badge-icon">NOM</div><span>EVITAR EN EMBARAZO</span></div>
   </div>
 
-  <!-- BANNER SANITARIO OBLIGATORIO -->
+  <!-- BANNER LEGAL -->
   <div class="nom-banner">
     EL ABUSO EN EL CONSUMO DE ESTE PRODUCTO ES NOCIVO PARA LA SALUD
   </div>
@@ -693,7 +487,6 @@
       document.getElementById('nav-' + pageId).classList.add('active');
 
       navMenu.classList.remove('mobile-open');
-
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
