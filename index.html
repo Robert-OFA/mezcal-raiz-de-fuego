@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mezcal Raíz del Fuego | Oaxaca</title>
+  <title>Mezcal Mayahuel | Oaxaca</title>
   <style>
     /* ESTILOS GENERALES Y PALETA DE COLORES */
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -49,7 +49,7 @@
       cursor: pointer;
     }
     
-    /* BOTÓN HAMBURGUESA (Oculto en escritorio) */
+    /* BOTÓN HAMBURGUESA */
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -90,7 +90,7 @@
       border-bottom: 2px solid var(--primary-gold);
     }
 
-    /* MEDIA QUERY PARA DISPOSITIVOS MÓVILES (MENÚ HAMBURGUESA) */
+    /* ADAPTATIVO PARA MÓVILES */
     @media (max-width: 768px) {
       nav {
         padding: 15px 20px;
@@ -323,7 +323,7 @@
     }
     .process-img-box {
       width: 100%;
-      height: 170px;
+      height: 180px;
       overflow: hidden;
     }
     .process-img-box img {
@@ -396,7 +396,7 @@
       background-color: #25d366; color: #fff; font-size: 1.1rem; width: 100%; text-align: center; padding: 14px; border-radius: 6px; display: block; text-decoration: none; font-weight: bold;
     }
 
-    /* BADGES DE ADVERTENCIA LEGAL (NOM) */
+    /* BADGES DE ADVERTENCIA LEGAL */
     .legal-badges {
       display: flex;
       justify-content: center;
@@ -458,9 +458,8 @@
 
   <!-- BARRA DE NAVEGACIÓN -->
   <nav>
-    <div class="logo" onclick="showPage('inicio')">Raíz del Fuego</div>
+    <div class="logo" onclick="showPage('inicio')">Mayahuel</div>
     
-    <!-- Botón de tres líneas (Hamburguesa) para móvil -->
     <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
       <span></span>
       <span></span>
@@ -480,11 +479,11 @@
   <div id="page-inicio" class="page-section active-page">
     <section class="hero">
       <div class="hero-content-box">
-        <h2>Nacido en las Montañas de Oaxaca</h2>
-        <p>Inspirado en la mística de Hierve el Agua y el calor ancestral del horno de piedra. Un destilado donde la raíz se vuelve fuego.</p>
+        <h2>Elixir Sagrado Nacido en Oaxaca</h2>
+        <p>Inspirado en la mística de la diosa Mayahuel y el fuego del agave. Un destilado ancestral donde la tradición renace en cada gota.</p>
         <div class="hero-buttons">
           <button class="btn btn-yes" onclick="showPage('productos')">Ver Productos</button>
-          <button class="btn btn-yes" style="background: transparent; color: var(--primary-gold); border: 1px solid var(--primary-gold);" onclick="showPage('nosotros')">Nuestra Historia</button>
+          <button class="btn btn-yes" style="background: transparent; color: var(--primary-gold); border: 1px solid var(--primary-gold);" onclick="showPage('nosotros')">Nuestra Leyenda</button>
         </div>
       </div>
     </section>
@@ -493,16 +492,16 @@
     <section class="highlights-section">
       <div class="highlights-grid">
         <div class="highlight-card">
-          <h3>Origen Ancestral</h3>
-          <p>Producido en el corazón de Oaxaca, respetando la tierra y seleccionando agaves maduros de primera calidad.</p>
+          <h3>Tierra y Pasión</h3>
+          <p>Cultivo sustentable de agaves maduros en los valles sagrados de Oaxaca.</p>
         </div>
         <div class="highlight-card">
-          <h3>Cocción Tradicional</h3>
-          <p>Cocido bajo tierra en horno cónico de piedra con leña de encino para obtener un carácter suave y ahumado.</p>
+          <h3>Cocción Ancestral</h3>
+          <p>Cocido lento en horno cónico bajo tierra para extraer el dulzor de la piña y su nota ahumada caracteristica.</p>
         </div>
         <div class="highlight-card">
-          <h3>Lotes Limitados</h3>
-          <p>Cada botella es envasada de origen y numerada para garantizar la autenticidad y pureza del destilado.</p>
+          <h3>Edición Limitada</h3>
+          <p>Cada lote es envasado de origen y numerado a mano para asegurar un perfil único e irrepetible.</p>
         </div>
       </div>
     </section>
@@ -519,19 +518,19 @@
   <!-- PÁGINA 2: SOBRE NOSOTROS -->
   <div id="page-nosotros" class="page-section">
     <div class="container">
-      <h2 class="page-title">Sobre Nosotros</h2>
+      <h2 class="page-title">Sobre Mayahuel</h2>
       <div class="about-grid">
         <div class="about-image">
           <img src="https://images.unsplash.com/photo-1569880153113-76e33fc52d5f?q=80&w=800&auto=format&fit=crop" alt="Campo de Agaves en Oaxaca">
         </div>
         <div class="about-card">
-          <h3>Nuestra Tradición Ancestral</h3>
+          <h3>Nuestra Herencia y Devoción</h3>
           <p>
-            En <strong>Mezcal Raíz del Fuego</strong> honramos la herencia oaxaqueña seleccionando agaves maduros cultivados con cuidado en las tierras altas de Oaxaca. 
+            En <strong>Mezcal Mayahuel</strong> rendimos tributo a la diosa del agave y la fertilidad. Seleccionamos agaves maduros cultivados con cuidado en las tierras altas oaxaqueñas.
           </p>
           <br>
           <p>
-            Nuestra misión es llevar a tu copa la mística, el fuego y la devoción de nuestros maestros mezcaleros, respetando los tiempos naturales de la tierra y los procesos 100% artesanales sin acelerantes ni aditivos químicos.
+            Nuestra misión es llevar a tu copa un destilado que honra los métodos tradicionales sin acelerantes ni aditivos químicos, conservando intacta la esencia ancestral del mezcal artesanal.
           </p>
         </div>
       </div>
@@ -541,53 +540,53 @@
   <!-- PÁGINA 3: PROCESO ARTESANAL -->
   <div id="page-proceso" class="page-section">
     <div class="container">
-      <h2 class="page-title">Proceso 100% Artesanal</h2>
+      <h2 class="page-title">Proceso de Elaboración Artesanal</h2>
       <div class="process-grid">
-        <!-- 01 COSECHA -->
+        <!-- 01 JIMA -->
         <div class="process-card">
           <div class="process-img-box">
-            <img src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?q=80&w=600&auto=format&fit=crop" alt="Cosecha y Jima de Agave">
+            <img src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?q=80&w=600&auto=format&fit=crop" alt="Jima del agave para extraer las piñas">
           </div>
           <div class="process-body">
             <div class="process-step-num">01</div>
-            <h4>Cosecha (Jima)</h4>
-            <p>Selección y jima manual de agaves Espadín maduros en valles oaxaqueños.</p>
+            <h4>Jima / Cosecha</h4>
+            <p>Corte manual de las pencas de agaves Espadín maduros con coa para obtener el corazón o piña.</p>
           </div>
         </div>
         
         <!-- 02 COCCIÓN -->
         <div class="process-card">
           <div class="process-img-box">
-            <img src="https://images.unsplash.com/photo-1508672019048-805479767013?q=80&w=600&auto=format&fit=crop" alt="Cocción en Horno de Piedra Bajo Tierra">
+            <img src="https://images.unsplash.com/photo-1508672019048-805479767013?q=80&w=600&auto=format&fit=crop" alt="Cocción de piñas en horno cónico bajo tierra">
           </div>
           <div class="process-body">
             <div class="process-step-num">02</div>
-            <h4>Cocción</h4>
-            <p>Cocido lento durante 3 días en horno cónico de piedra bajo tierra con leña de encino.</p>
+            <h4>Cocción Bajo Tierra</h4>
+            <p>Horneado durante varios días en pozo cónico de piedra volcánica con leña de encino.</p>
           </div>
         </div>
         
         <!-- 03 MOLIENDA -->
         <div class="process-card">
           <div class="process-img-box">
-            <img src="https://images.unsplash.com/photo-1584225064785-c62a8b43d148?q=80&w=600&auto=format&fit=crop" alt="Molienda Tradicional en Tahona de Piedra">
+            <img src="https://images.unsplash.com/photo-1584225064785-c62a8b43d148?q=80&w=600&auto=format&fit=crop" alt="Molienda de agave en tahona tradicional">
           </div>
           <div class="process-body">
             <div class="process-step-num">03</div>
-            <h4>Molienda</h4>
-            <p>Molienda tradicional con tahona de piedra accionada por tiro para triturar la piña.</p>
+            <h4>Molienda en Tahona</h4>
+            <p>Triturado de piñas cocidas con una gran rueda de cantera para extraer azúcares y fibras.</p>
           </div>
         </div>
         
         <!-- 04 DESTILACIÓN -->
         <div class="process-card">
           <div class="process-img-box">
-            <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?q=80&w=600&auto=format&fit=crop" alt="Destilación en Alambique de Cobre">
+            <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?q=80&w=600&auto=format&fit=crop" alt="Destilación en alambique de cobre">
           </div>
           <div class="process-body">
             <div class="process-step-num">04</div>
             <h4>Destilación</h4>
-            <p>Doble destilación en alambique de cobre que conserva notas herbales y ahumadas.</p>
+            <p>Doble destilación en alambique de cobre que otorga suavidad y preserva aromas herbales y ahumados.</p>
           </div>
         </div>
       </div>
@@ -602,19 +601,19 @@
         <div class="tasting-grid">
           <div class="tasting-card">
             <h4>Vista</h4>
-            <p>Limpio, brillante, con cuerpo medio y perleo fino al servir en mezcalero tradicional.</p>
+            <p>Cristalino, limpio y brillante, con un perleo fino y persistente al servir.</p>
           </div>
           <div class="tasting-card">
             <h4>Aroma</h4>
-            <p>Notas cítricas dulces, agave cocido, herbal fresco y un humo tenue muy elegante.</p>
+            <p>Sutil aroma a agave cocido, toques de cítricos, hierba fresca y un humo suave refinado.</p>
           </div>
           <div class="tasting-card">
             <h4>Maridaje Sugerido</h4>
-            <p>Acompaña con rodajas de naranja, sal de gusano de maguey, quesillo oaxaqueño o chocolate amargo.</p>
+            <p>Acompaña con rodajas de naranja, sal de gusano, quesillo oaxaqueño o chocolate amargo artesanal.</p>
           </div>
         </div>
         <div class="tasting-image">
-          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop" alt="Servicio tradicional de Mezcal artesanal">
+          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop" alt="Servicio tradicional de Mezcal Mayahuel">
         </div>
       </div>
     </div>
@@ -623,18 +622,18 @@
   <!-- PÁGINA 5: PRODUCTOS -->
   <div id="page-productos" class="page-section">
     <div class="container">
-      <h2 class="page-title">Nuestra Edición Limitada</h2>
+      <h2 class="page-title">Edición Reservada</h2>
       <div class="product-grid">
         <div class="product-image-container">
-          <img src="botellas.jpg" alt="Botellas de Mezcal Raíz del Fuego">
+          <img src="botellas.jpg" alt="Botellas de Mezcal Mayahuel">
         </div>
         <div class="product-card">
-          <h3>Espadín Artesanal Oaxaca</h3>
+          <h3>Espadín Artesanal Mayahuel</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem;">45% Alc. Vol. | Lote Limitado 001/25</p>
           <div class="product-price">1000 ml & 750 ml</div>
-          <p style="color: var(--text-dark);">Destilado suave al paladar con carácter ahumado equilibrado. Ideal para disfrutar derecho o en coctelería de autor.</p>
+          <p style="color: var(--text-dark);">Destilado suave al paladar con carácter ahumado equilibrado. Ideal para disfrutar directo a besos o en coctelería de autor.</p>
           <br>
-          <a href="https://wa.me/5215500000000?text=Hola,%20me%20interesa%20comprar%20una%20botella%20de%20Mezcal%20Ra%C3%ADz%20del%20Fuego." target="_blank" class="btn btn-whatsapp">
+          <a href="https://wa.me/5215500000000?text=Hola,%20me%20interesa%20comprar%20una%20botella%20de%20Mezcal%20Mayahuel." target="_blank" class="btn btn-whatsapp">
             Pedir por WhatsApp
           </a>
         </div>
@@ -665,7 +664,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>&copy; 2026 Mezcal Raíz del Fuego. Todos los derechos reservados.</p>
+    <p>&copy; 2026 Mezcal Mayahuel. Todos los derechos reservados.</p>
     <p>Oaxaca, México. Prohibida la venta a menores de 18 años.</p>
   </footer>
 
@@ -673,7 +672,6 @@
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
 
-    // Alternar menú hamburguesa al hacer clic
     menuToggle.addEventListener('click', () => {
       navMenu.classList.toggle('mobile-open');
     });
@@ -688,7 +686,6 @@
       document.getElementById('page-' + pageId).classList.add('active-page');
       document.getElementById('nav-' + pageId).classList.add('active');
 
-      // Cerrar menú móvil si está abierto tras seleccionar una opción
       navMenu.classList.remove('mobile-open');
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
