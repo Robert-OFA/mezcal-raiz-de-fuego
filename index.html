@@ -7,14 +7,14 @@
   <!-- Fuentes Elegantes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <style>
     /* =========================================================
-       PALETA Y ESTILOS EN TONOS CLAROS Y ELEGANTES
+       PALETA CLARA Y MINIMALISTA (DISEÑO ORIGINAL)
        ========================================================= */
     :root {
-      --bg-light: #faf8f5;
+      --bg-body: #faf8f5;
       --bg-card: #ffffff;
       --gold-primary: #b8860b;
       --gold-hover: #966d08;
@@ -27,7 +27,7 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: var(--bg-light);
+      background-color: var(--bg-body);
       color: var(--text-dark);
       line-height: 1.6;
       display: flex;
@@ -35,12 +35,12 @@
       min-height: 100vh;
     }
 
-    h1, h2, h3, h4, .brand-title {
+    h1, h2, h3, h4 {
       font-family: 'Cinzel', serif;
       letter-spacing: 1px;
     }
 
-    /* NAVEGACIÓN LIMPIA */
+    /* NAVEGACIÓN */
     nav {
       position: sticky;
       top: 0;
@@ -122,7 +122,7 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: var(--bg-light);
+        background: var(--bg-body);
         border-bottom: 1px solid var(--border-color);
         padding: 25px;
         gap: 20px;
@@ -152,9 +152,9 @@
 
     .page-title {
       text-align: center;
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: var(--gold-primary);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       font-weight: 700;
     }
 
@@ -186,15 +186,15 @@
       color: #ffffff;
     }
 
-    /* HERO BANNER INICIO */
+    /* HERO */
     .hero {
-      padding: 100px 20px;
+      padding: 110px 20px;
       text-align: center;
       background-color: #ffffff;
       border-bottom: 1px solid var(--border-color);
     }
     .hero h1 {
-      font-size: 3rem;
+      font-size: 3.2rem;
       color: var(--text-dark);
       margin-bottom: 15px;
     }
@@ -206,7 +206,7 @@
       font-weight: 300;
     }
 
-    /* TARJETAS DEL PROCESO ARTESANAL */
+    /* PROCESO ARTESANAL */
     .process-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -219,7 +219,7 @@
       border-radius: 6px;
       overflow: hidden;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
       transition: transform 0.3s ease;
     }
 
@@ -227,34 +227,21 @@
       transform: translateY(-5px);
     }
 
-    .process-img-box {
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      background-color: #f0ece6;
-    }
-
-    .process-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
     .process-body {
-      padding: 25px 20px;
+      padding: 30px 20px;
     }
 
     .process-step-num {
       font-family: 'Cinzel', serif;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       color: var(--gold-primary);
       font-weight: 700;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
 
     .process-body h4 {
-      font-size: 1.1rem;
-      color: var(--gold-primary);
+      font-size: 1.15rem;
+      color: var(--text-dark);
       margin-bottom: 10px;
     }
 
@@ -263,7 +250,7 @@
       color: var(--text-muted);
     }
 
-    /* PRODUCTOS */
+    /* PRODUCTO */
     .product-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -272,8 +259,8 @@
       max-width: 800px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 250px 1fr;
-      gap: 30px;
+      grid-template-columns: 260px 1fr;
+      gap: 35px;
       align-items: center;
     }
 
@@ -297,7 +284,7 @@
       font-weight: 700;
     }
 
-    /* PIE DE PÁGINA Y AVISOS */
+    /* PIE Y LEGAL */
     .legal-notice {
       background-color: #f0ece6;
       text-align: center;
@@ -335,90 +322,74 @@
     </ul>
   </nav>
 
-  <!-- PÁGINA 1: INICIO -->
+  <!-- INICIO -->
   <div id="page-inicio" class="page-section active-page">
     <section class="hero">
       <h1>MAYAHUEL</h1>
-      <p>Destilado Artesanal de Agave Espadín de Oaxaca. Elaborado en honor a la antigua tradición de los valles oaxaqueños.</p>
+      <p>Destilado Artesanal de Agave Espadín de Oaxaca. Elaborado en honor a la diosa del maguey y la antigua tradición de los valles oaxaqueños.</p>
       <button class="btn" onclick="showPage('proceso')">Conocer el Proceso</button>
     </section>
   </div>
 
-  <!-- PÁGINA 2: ORIGEN / SOBRE NOSOTROS -->
+  <!-- ORIGEN -->
   <div id="page-nosotros" class="page-section">
     <div class="container">
       <h2 class="page-title">Tributo a Mayahuel</h2>
       <div class="title-divider"></div>
       <div style="max-width: 750px; margin: 0 auto; text-align: center;">
         <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 20px;">
-          Inspirado en la deidad prehispánica del agave y la fertilidad, **Mayahuel** rinde homenaje a la mística transformación de la planta en destilado.
+          Inspirado en la deidad prehispánica del maguey, Mayahuel rinde homenaje a la mística transformación de la planta sagrada en un elixir único.
         </p>
         <p style="color: var(--text-muted); font-size: 1rem;">
-          Cada botella representa la paciencia de 8 años de maduración bajo el sol de los Valles Centrales de Oaxaca y la maestría de manos artesanas.
+          Cada botella representa la paciencia de hasta 8 años de maduración del agave Espadín bajo el sol de los Valles Centrales de Oaxaca y el saber hacer de nuestros maestros artesanos.
         </p>
       </div>
     </div>
   </div>
 
-  <!-- PÁGINA 3: PROCESO ARTESANAL (CON IMÁGENES Y ADAPTADO) -->
+  <!-- PROCESO ARTESANAL -->
   <div id="page-proceso" class="page-section">
     <div class="container">
       <h2 class="page-title">Proceso 100% Artesanal</h2>
       <div class="title-divider"></div>
 
       <div class="process-grid">
-        <!-- ETAPA 01: COSECHA -->
         <div class="process-card">
-          <div class="process-img-box">
-            <img src="https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?auto=format&fit=crop&w=600&q=80" alt="Cosecha y Jima de Agave Espadín">
-          </div>
           <div class="process-body">
             <div class="process-step-num">01</div>
-            <h4>Cosecha</h4>
-            <p>Selección y jima manual de agaves Espadín maduros en los valles oaxaqueños.</p>
+            <h4>Cosecha (Jima)</h4>
+            <p>El jimador corta manualmente las pencas del agave Espadín maduro hasta extraer el corazón o piña.</p>
           </div>
         </div>
 
-        <!-- ETAPA 02: COCCIÓN -->
         <div class="process-card">
-          <div class="process-img-box">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Cocción en Horno de Piedra">
-          </div>
           <div class="process-body">
             <div class="process-step-num">02</div>
             <h4>Cocción</h4>
-            <p>Cocido lento durante 3 días en horno cónico de piedra bajo tierra con leña de encino.</p>
+            <p>Cocido lento durante 3 días en horno cónico de piedra bajo tierra con leña de encino y volcánica.</p>
           </div>
         </div>
 
-        <!-- ETAPA 03: MOLIENDA -->
         <div class="process-card">
-          <div class="process-img-box">
-            <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80" alt="Molienda Tradicional con Tahona">
-          </div>
           <div class="process-body">
             <div class="process-step-num">03</div>
             <h4>Molienda</h4>
-            <p>Molienda tradicional con tahona de piedra egipcia para extraer sus jugos puros.</p>
+            <p>Molienda artesanal utilizando una tahona de piedra para triturar la fibra y liberar sus azúcares.</p>
           </div>
         </div>
 
-        <!-- ETAPA 04: DESTILACIÓN -->
         <div class="process-card">
-          <div class="process-img-box">
-            <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=600&q=80" alt="Destilación en Alambique de Cobre">
-          </div>
           <div class="process-body">
             <div class="process-step-num">04</div>
             <h4>Destilación</h4>
-            <p>Doble destilación en alambique de cobre que conserva notas herbales y ahumadas.</p>
+            <p>Doble destilación en alambique de cobre tradicional que conserva sus matices ahumados e idénticos.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- PÁGINA 4: COLECCIÓN Y PRODUCTO -->
+  <!-- PRODUCTOS -->
   <div id="page-productos" class="page-section">
     <div class="container">
       <h2 class="page-title">Nuestra Edición</h2>
@@ -431,7 +402,7 @@
           <p style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; margin-top: 4px;">45% ALC. VOL. / 750 ML</p>
           <div class="product-price">$ 850 MXN</div>
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">
-            En boca presenta un perfil suave con notas herbales, toque ahumado sutil y un final dulce a agave cocido.
+            Equilibrio perfecto con matices herbales, ligero toque de humo de encino y un final suave a agave cocido.
           </p>
           <a href="https://wa.me/5215500000000?text=Hola,%20quisiera%20pedir%20informaci%C3%B3n%20para%20comprar%20Mayahuel." target="_blank" class="btn">
             Consultar por WhatsApp
@@ -441,17 +412,17 @@
     </div>
   </div>
 
-  <!-- AVISO LEGAL DE SALUD -->
+  <!-- AVISO LEGAL -->
   <div class="legal-notice">
     EL ABUSO EN EL CONSUMO DE ESTE PRODUCTO ES NOCIVO PARA LA SALUD. EVITE EL EXCESO. PROHIBIDA LA VENTA A MENORES DE 18 AÑOS.
   </div>
 
-  <!-- PIE DE PÁGINA -->
+  <!-- FOOTER -->
   <footer>
     <p>&copy; 2026 Mayahuel Destilado de Agave. Oaxaca, México.</p>
   </footer>
 
-  <!-- SCRIPT DE NAVEGACIÓN -->
+  <!-- SCRIPT -->
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
