@@ -27,7 +27,7 @@
       min-height: 100vh;
     }
 
-    /* BARRA DE NAVEGACIÓN PROFESIONAL CON MENÚ ADAPTATIVO */
+    /* BARRA DE NAVEGACIÓN */
     nav {
       position: sticky;
       top: 0;
@@ -176,14 +176,14 @@
     .btn-yes:hover { background: var(--gold-hover); }
     .btn-no { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); }
 
-    /* HERO PRINCIPAL (IMAGEN DE HIERVE EL AGUA) */
+    /* HERO PRINCIPAL */
     .hero {
       padding: 130px 20px;
       text-align: center;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/4/43/HierveElAguaMexico1.jpg') center/cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1518635017498-87f514b751ba?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
     }
     .hero-content-box {
-      background: rgba(255, 255, 255, 0.93);
+      background: rgba(255, 255, 255, 0.95);
       display: inline-block;
       padding: 45px 50px;
       border-radius: 12px;
@@ -191,7 +191,17 @@
       max-width: 800px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
-    .hero h2 { font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 12px; font-weight: bold; }
+    .hero h2 { font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 5px; font-weight: bold; }
+    
+    /* ESTILO PARA EL ESLOGAN */
+    .slogan {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--primary-gold);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
     .hero p { color: var(--text-dark); font-size: 1.15rem; font-weight: 500; }
     
     .hero-buttons {
@@ -385,7 +395,12 @@
       align-items: center;
     }
     .product-image-container img {
-      width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border-color); box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      width: 100%; 
+      height: 400px; 
+      object-fit: cover;
+      border-radius: 10px; 
+      border: 1px solid var(--border-color); 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
     .product-card {
       background: var(--bg-card); border-radius: 10px; padding: 35px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.04);
@@ -467,11 +482,11 @@
     </button>
 
     <ul id="nav-menu">
-      <li><a id="nav-inicio" class="active" onclick="showPage('inicio')">Inicio</a></li>
-      <li><a id="nav-nosotros" onclick="showPage('nosotros')">Sobre Nosotros</a></li>
-      <li><a id="nav-proceso" onclick="showPage('proceso')">Proceso</a></li>
-      <li><a id="nav-maridaje" onclick="showPage('maridaje')">Notas de Cata</a></li>
-      <li><a id="nav-productos" onclick="showPage('productos')">Productos</a></li>
+      <li><a href="#" id="nav-inicio" class="active" onclick="showPage('inicio')">Inicio</a></li>
+      <li><a href="#" id="nav-nosotros" onclick="showPage('nosotros')">Sobre Nosotros</a></li>
+      <li><a href="#" id="nav-proceso" onclick="showPage('proceso')">Proceso</a></li>
+      <li><a href="#" id="nav-maridaje" onclick="showPage('maridaje')">Notas de Cata</a></li>
+      <li><a href="#" id="nav-productos" onclick="showPage('productos')">Productos</a></li>
     </ul>
   </nav>
 
@@ -479,7 +494,10 @@
   <div id="page-inicio" class="page-section active-page">
     <section class="hero">
       <div class="hero-content-box">
-        <h2>Elixir Sagrado Nacido en Oaxaca</h2>
+        <h2>Mezcal Mayahuel</h2>
+        <!-- ESLOGAN -->
+        <p class="slogan">"Donde la raíz se vuelve fuego"</p>
+        
         <p>Inspirado en la mística de la diosa Mayahuel y el fuego del agave. Un destilado ancestral donde la tradición renace en cada gota.</p>
         <div class="hero-buttons">
           <button class="btn btn-yes" onclick="showPage('productos')">Ver Productos</button>
@@ -521,8 +539,7 @@
       <h2 class="page-title">Sobre Mayahuel</h2>
       <div class="about-grid">
         <div class="about-image">
-          <!-- IMAGEN REAL: Campo de agaves para mezcal -->
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Agave_field_in_Oaxaca.jpg" alt="Campo de Agaves en Oaxaca">
+          <img src="https://images.unsplash.com/photo-1518635017498-87f514b751ba?auto=format&fit=crop&w=800&q=80" alt="Campo de Agaves en Oaxaca">
         </div>
         <div class="about-card">
           <h3>Nuestra Herencia y Devoción</h3>
@@ -546,8 +563,7 @@
         <!-- 01 JIMA -->
         <div class="process-card">
           <div class="process-img-box">
-            <!-- IMAGEN REAL: Jimador o piña de agave pelada -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Agave_pinas.jpg/800px-Agave_pinas.jpg" alt="Jima del agave para extraer las piñas">
+            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=600&q=80" alt="Jima del agave para extraer las piñas">
           </div>
           <div class="process-body">
             <div class="process-step-num">01</div>
@@ -559,8 +575,7 @@
         <!-- 02 COCCIÓN -->
         <div class="process-card">
           <div class="process-img-box">
-            <!-- IMAGEN REAL: Horno cónico de piedra bajo tierra -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Horno_conico_mezcal.jpg/800px-Horno_conico_mezcal.jpg" alt="Cocción de piñas en horno cónico bajo tierra">
+            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" alt="Cocción de piñas en horno cónico bajo tierra">
           </div>
           <div class="process-body">
             <div class="process-step-num">02</div>
@@ -572,8 +587,7 @@
         <!-- 03 MOLIENDA -->
         <div class="process-card">
           <div class="process-img-box">
-            <!-- IMAGEN REAL: Tahona de piedra tradicional triturando agave -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Tahona_Mezcal.jpg/800px-Tahona_Mezcal.jpg" alt="Molienda de agave en tahona tradicional">
+            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80" alt="Molienda de agave en tahona tradicional">
           </div>
           <div class="process-body">
             <div class="process-step-num">03</div>
@@ -585,8 +599,7 @@
         <!-- 04 DESTILACIÓN -->
         <div class="process-card">
           <div class="process-img-box">
-            <!-- IMAGEN REAL: Alambique de cobre auténtico -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Alambique_Mezcal_Oaxaca.jpg/800px-Alambique_Mezcal_Oaxaca.jpg" alt="Destilación en alambique de cobre">
+            <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=600&q=80" alt="Destilación en alambique de cobre">
           </div>
           <div class="process-body">
             <div class="process-step-num">04</div>
@@ -618,8 +631,7 @@
           </div>
         </div>
         <div class="tasting-image">
-          <!-- IMAGEN REAL: Vaso con mezcal y rodaja de naranja tradicional -->
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Mezcal_with_orange_slice.jpg/800px-Mezcal_with_orange_slice.jpg" alt="Servicio tradicional de Mezcal Mayahuel">
+          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Servicio tradicional de Mezcal Mayahuel">
         </div>
       </div>
     </div>
@@ -631,7 +643,7 @@
       <h2 class="page-title">Edición Reservada</h2>
       <div class="product-grid">
         <div class="product-image-container">
-          <img src="botellas.jpg" alt="Botellas de Mezcal Mayahuel">
+          <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=800&q=80" alt="Botellas de Mezcal Mayahuel">
         </div>
         <div class="product-card">
           <h3>Espadín Artesanal Mayahuel</h3>
@@ -689,8 +701,11 @@
       const navLinks = document.querySelectorAll('nav ul li a');
       navLinks.forEach(link => link.classList.remove('active'));
 
-      document.getElementById('page-' + pageId).classList.add('active-page');
-      document.getElementById('nav-' + pageId).classList.add('active');
+      const targetPage = document.getElementById('page-' + pageId);
+      const targetNav = document.getElementById('nav-' + pageId);
+
+      if (targetPage) targetPage.classList.add('active-page');
+      if (targetNav) targetNav.classList.add('active');
 
       navMenu.classList.remove('mobile-open');
 
