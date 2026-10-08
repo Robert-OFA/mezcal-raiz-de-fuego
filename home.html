@@ -13,7 +13,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --bg-light: #ffffff;
-      --bg-card: rgba(255, 255, 255, 0.95);
+      --bg-card: rgba(251, 249, 245, 0.94);
       --primary-gold: #b8860b;
       --gold-hover: #d4af37;
       --text-dark: #1a1a1a;
@@ -23,7 +23,7 @@
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f7f5f0;
+      background-color: #fcfbf8;
       color: var(--text-dark);
       line-height: 1.6;
       display: flex;
@@ -32,15 +32,23 @@
       position: relative;
     }
 
-    /* CONTENEDOR 3D DEL AGAVE VERDE (SOBRE LA PANTALLA) */
+    /* CONTENEDOR 3D (POSICIONADO EN LA ESQUINA INFERIOR IZQUIERDA EN LUGAR DE TAPAR EL CENTRO) */
     #agave-3d-container {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 999; /* Se posiciona AL FRENTE de toda la web */
-      pointer-events: none; /* Permite interactuar con los botones y textos que están detrás */
+      bottom: 0;
+      left: -5vw;
+      width: 45vw;
+      height: 65vh;
+      z-index: 999;
+      pointer-events: none; /* Interacción libre sobre la UI */
+    }
+
+    @media (max-width: 768px) {
+      #agave-3d-container {
+        width: 70vw;
+        height: 45vh;
+        left: -10vw;
+      }
     }
 
     /* BARRA DE NAVEGACIÓN */
@@ -55,7 +63,7 @@
       align-items: center;
       padding: 15px 40px;
       z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
     nav .logo {
       font-size: 1.4rem;
@@ -66,7 +74,6 @@
       cursor: pointer;
     }
     
-    /* BOTÓN HAMBURGUESA */
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -87,7 +94,6 @@
       transition: all 0.3s ease;
     }
 
-    /* LISTA DE NAVEGACIÓN EN ESCRITORIO */
     nav ul {
       display: flex;
       list-style: none;
@@ -107,7 +113,6 @@
       border-bottom: 2px solid var(--primary-gold);
     }
 
-    /* ADAPTATIVO PARA MÓVILES */
     @media (max-width: 768px) {
       nav { padding: 15px 20px; }
       .menu-toggle { display: flex; }
@@ -129,7 +134,6 @@
       nav ul li a { font-size: 1.1rem; display: inline-block; }
     }
 
-    /* SISTEMA DE PÁGINAS INDEPENDIENTES */
     .page-section {
       display: none;
       flex: 1;
@@ -144,13 +148,11 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* MODAL DE EDAD (+18) */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -184,11 +186,10 @@
     .btn-yes:hover { background: var(--gold-hover); }
     .btn-no { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); }
 
-    /* HERO PRINCIPAL */
     .hero {
       padding: 130px 20px;
       text-align: center;
-      background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('hierveelaguaoa.jpg') center/cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('hierveelaguaoa.jpg') center/cover no-repeat;
     }
     .hero-content-box {
       background: rgba(255, 255, 255, 0.94);
@@ -217,7 +218,6 @@
       flex-wrap: wrap;
     }
 
-    /* PILARES DESTACADOS EN INICIO */
     .highlights-section { padding: 60px 20px; max-width: 1050px; margin: 0 auto; }
     .highlights-grid {
       display: grid;
@@ -231,14 +231,13 @@
       padding: 35px 25px;
       border-radius: 8px;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
       transition: transform 0.3s ease;
     }
     .highlight-card:hover { transform: translateY(-5px); }
     .highlight-card h3 { color: var(--primary-gold); font-size: 1.3rem; margin-bottom: 12px; }
     .highlight-card p { color: var(--text-dark); font-size: 0.98rem; }
 
-    /* FRASE DESTACADA */
     .quote-banner {
       background: var(--bg-card);
       border-top: 1px solid var(--border-color);
@@ -264,7 +263,6 @@
       text-transform: uppercase;
     }
 
-    /* CONTENEDOR DE PÁGINAS INTERNAS */
     .container { padding: 60px 20px; max-width: 1050px; margin: 0 auto; }
     .page-title {
       text-align: center;
@@ -282,26 +280,13 @@
       margin: 10px auto 0;
     }
 
-    /* PÁGINA SOBRE NOSOTROS */
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 35px;
-      align-items: center;
-    }
-    .about-image img {
-      width: 100%; height: 350px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
-    .about-card {
-      background: var(--bg-card); padding: 35px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); line-height: 1.8; font-size: 1.05rem;
-    }
+    .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; align-items: center; }
+    .about-image img { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+    .about-card { background: var(--bg-card); padding: 35px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); line-height: 1.8; font-size: 1.05rem; }
     .about-card h3 { color: var(--primary-gold); margin-bottom: 15px; font-size: 1.5rem; }
 
-    /* PÁGINA PROCESO ARTESANAL */
     .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
-    .process-card {
-      background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03); display: flex; flex-direction: column;
-    }
+    .process-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03); display: flex; flex-direction: column; }
     .process-img-box { width: 100%; height: 180px; overflow: hidden; }
     .process-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
     .process-card:hover .process-img-box img { transform: scale(1.05); }
@@ -309,14 +294,12 @@
     .process-step-num { font-size: 1.3rem; font-weight: bold; color: var(--primary-gold); margin-bottom: 5px; }
     .process-card h4 { color: var(--primary-gold); margin-bottom: 8px; font-size: 1.2rem; }
 
-    /* PÁGINA MARIDAJE Y CATA */
     .tasting-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; align-items: center; }
     .tasting-grid { display: flex; flex-direction: column; gap: 20px; }
     .tasting-card { border: 1px solid var(--border-color); padding: 22px; border-radius: 10px; background: var(--bg-card); border-left: 4px solid var(--primary-gold); }
     .tasting-card h4 { color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 8px; }
     .tasting-image img { width: 100%; height: 380px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
 
-    /* PÁGINA PRODUCTOS */
     .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; align-items: center; }
     .product-image-container img { width: 100%; height: 400px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border-color); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
     .product-card { background: var(--bg-card); border-radius: 10px; padding: 35px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
@@ -324,12 +307,10 @@
     .product-price { font-size: 1.8rem; color: var(--text-dark); margin: 15px 0; font-weight: bold; }
     .btn-whatsapp { background-color: #25d366; color: #fff; font-size: 1.1rem; width: 100%; text-align: center; padding: 14px; border-radius: 6px; display: block; text-decoration: none; font-weight: bold; }
 
-    /* BADGES LEGALES */
     .legal-badges { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin: 40px 0 15px 0; position: relative; z-index: 1; }
     .badge-item { display: flex; flex-direction: column; align-items: center; font-size: 0.8rem; color: var(--text-muted); font-weight: bold; }
     .badge-icon { width: 45px; height: 45px; border: 2px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; margin-bottom: 5px; color: #333; font-weight: bold; }
 
-    /* BANNER SANITARIO OBLIGATORIO */
     .nom-banner { background: #111111; color: #ffffff; text-align: center; padding: 16px; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; margin-top: auto; position: relative; z-index: 1; }
     footer { padding: 35px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); background: #ffffff; position: relative; z-index: 1; }
   </style>
@@ -337,7 +318,7 @@
 
 <body>
 
-  <!-- CONTENEDOR 3D DEL AGAVE VERDE (EN EL FRENTE) -->
+  <!-- CONTENEDOR 3D PARA EL AGAVE TIPO ESPADÍN / 400 CONEJOS -->
   <div id="agave-3d-container"></div>
 
   <!-- MODAL DE EDAD (+18) -->
@@ -541,10 +522,9 @@
   </footer>
 
   <script>
-    /* NAVEGACIÓN Y MODAL DE EDAD */
+    /* NAVEGACIÓN Y MODAL */
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
-
     menuToggle.addEventListener('click', () => { navMenu.classList.toggle('mobile-open'); });
 
     function showPage(pageId) {
@@ -570,53 +550,55 @@
       }
     }
 
-    /* ==========================================================
-       MODELADO 3D Y RENDERIZADO DEL AGAVE VERDE (EN EL FRENTE)
-       ========================================================== */
+    /* =================================================================
+       AGAVE REALISTA TIPO ESPADÍN (400 CONEJOS) EN TRES DIMENSIONES
+       ================================================================= */
     const container3d = document.getElementById('agave-3d-container');
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 0, 8);
-    camera.lookAt(0, 0, 0);
+    const camera = new THREE.PerspectiveCamera(40, container3d.clientWidth / container3d.clientHeight, 0.1, 1000);
+    camera.position.set(0, 1.2, 7.5);
+    camera.lookAt(0, 1.2, 0);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(container3d.clientWidth, container3d.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.shadowMap.enabled = true;
     container3d.appendChild(renderer.domElement);
 
-    // Luces para acentuar el color verde natural
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.95);
+    // Luz ambiental y direccional para sombras reales en pencas
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
     scene.add(ambientLight);
 
-    const sunLight = new THREE.DirectionalLight(0xffffff, 1.2);
-    sunLight.position.set(5, 8, 5);
+    const sunLight = new THREE.DirectionalLight(0xfff5e6, 1.3);
+    sunLight.position.set(5, 10, 6);
     scene.add(sunLight);
 
-    const fillLight = new THREE.DirectionalLight(0x4a7c59, 0.8);
-    fillLight.position.set(-5, -3, 3);
-    scene.add(fillLight);
+    const backLight = new THREE.DirectionalLight(0x2e6f40, 0.6);
+    backLight.position.set(-5, 2, -4);
+    scene.add(backLight);
 
-    // Grupo contenedor del Agave Verde
     const agaveGroup = new THREE.Group();
-    agaveGroup.position.set(0, -1.8, 0);
+    agaveGroup.position.set(-0.2, -1.2, 0);
     scene.add(agaveGroup);
 
-    // Geometría estilizada de penca de agave
-    function buildAgaveLeafGeometry(length, baseWidth) {
+    // Penca V-Shaped (acanalada, estilizada, fina tipo Espadín)
+    function createEspadinLeafGeometry(length, width) {
       const shape = new THREE.Shape();
       shape.moveTo(0, 0);
-      shape.quadraticCurveTo(baseWidth * 0.7, length * 0.35, baseWidth, length * 0.65);
-      shape.quadraticCurveTo(baseWidth * 0.3, length * 0.88, 0, length);
-      shape.quadraticCurveTo(-baseWidth * 0.3, length * 0.88, -baseWidth, length * 0.65);
-      shape.quadraticCurveTo(-baseWidth * 0.7, length * 0.35, 0, 0);
+      shape.lineTo(width * 0.45, length * 0.2);
+      shape.lineTo(width * 0.5, length * 0.7);
+      shape.lineTo(0, length); // Punta afilada
+      shape.lineTo(-width * 0.5, length * 0.7);
+      shape.lineTo(-width * 0.45, length * 0.2);
+      shape.closePath();
 
       const extrudeSettings = {
         steps: 1,
-        depth: 0.06,
+        depth: 0.04,
         bevelEnabled: true,
-        bevelThickness: 0.03,
-        bevelSize: 0.03,
+        bevelThickness: 0.02,
+        bevelSize: 0.02,
         bevelSegments: 2
       };
 
@@ -625,85 +607,89 @@
       return geo;
     }
 
-    // Materiales Verde Mezcalero
-    const outerLeafMat = new THREE.MeshStandardMaterial({
-      color: 0x2e6f40, // Verde penca madura
-      roughness: 0.45,
+    // Materiales Verde Agave Espadín con degradado visual
+    const outerMat = new THREE.MeshStandardMaterial({
+      color: 0x3d744f, // Verde agave maduro
+      roughness: 0.4,
       metalness: 0.1,
       side: THREE.DoubleSide
     });
 
-    const innerLeafMat = new THREE.MeshStandardMaterial({
-      color: 0x3d8c52, // Verde agave tierno
+    const innerMat = new THREE.MeshStandardMaterial({
+      color: 0x519166, // Verde más claro fresco en pencas centrales
       roughness: 0.35,
       metalness: 0.15,
       side: THREE.DoubleSide
     });
 
-    // Construcción de la planta por capas
-    const layers = 6;
-    const leavesPerLayer = [6, 8, 10, 12, 14, 16];
+    // Construcción en abanico denso
+    const totalCapas = 8;
+    const pencasPorCapa = [6, 8, 12, 16, 20, 24, 28, 32];
 
-    for (let layer = 0; layer < layers; layer++) {
-      const count = leavesPerLayer[layer];
-      const ratio = layer / (layers - 1);
+    for (let capa = 0; capa < totalCapas; capa++) {
+      const numPencas = pencasPorCapa[capa];
+      const factorCapa = capa / (totalCapas - 1);
       
-      const len = 1.6 + ratio * 2.2;
-      const wid = 0.22 + ratio * 0.18;
-      const leafGeo = buildAgaveLeafGeometry(len, wid);
-      const leafMat = layer < 2 ? innerLeafMat : outerLeafMat;
+      const largo = 2.2 + factorCapa * 2.8; // Pencas rectas y largas
+      const ancho = 0.12 + factorCapa * 0.14; // Pencas delgadas
+      const leafGeo = createEspadinLeafGeometry(largo, ancho);
+      const mat = capa < 3 ? innerMat : outerMat;
 
-      for (let i = 0; i < count; i++) {
-        const mesh = new THREE.Mesh(leafGeo, leafMat);
-        const angle = (i / count) * Math.PI * 2 + (layer * 0.4);
-        const tilt = 0.15 + Math.pow(ratio, 1.1) * 1.05;
+      for (let i = 0; i < numPencas; i++) {
+        const mesh = new THREE.Mesh(leafGeo, mat);
+        
+        // Disposición helicoidal y abanico
+        const angulo = (i / numPencas) * Math.PI * 2 + (capa * 0.35);
+        const inclinacion = 0.08 + Math.pow(factorCapa, 1.4) * 0.9; // Crecimiento erguido a ligeramente abierto
 
         mesh.rotation.x = Math.PI / 2;
-        mesh.position.y = len / 2;
+        mesh.position.y = largo / 2;
 
         const pivot = new THREE.Group();
         pivot.add(mesh);
-        pivot.rotation.y = angle;
-        pivot.rotation.x = tilt;
 
-        const scale = 0.92 + Math.random() * 0.16;
-        pivot.scale.set(scale, scale, scale);
+        pivot.rotation.y = angulo;
+        pivot.rotation.x = inclinacion;
+
+        // Escala aleatoria natural
+        const es = 0.9 + Math.random() * 0.2;
+        pivot.scale.set(es, es, es);
 
         agaveGroup.add(pivot);
       }
     }
 
-    // Piña central
-    const pinaGeo = new THREE.SphereGeometry(0.65, 16, 16);
-    pinaGeo.scale(1, 1.25, 1);
-    const pinaMat = new THREE.MeshStandardMaterial({ color: 0x224d2c, roughness: 0.6 });
+    // Piña
+    const pinaGeo = new THREE.ConeGeometry(0.5, 1.2, 16);
+    const pinaMat = new THREE.MeshStandardMaterial({ color: 0x274d32, roughness: 0.6 });
     const pina = new THREE.Mesh(pinaGeo, pinaMat);
-    pina.position.y = 0.15;
+    pina.position.y = 0.5;
     agaveGroup.add(pina);
 
-    // Interacción suave con el cursor
+    // Movimiento suave interactivo
     let mouseX = 0, mouseY = 0;
     window.addEventListener('mousemove', (e) => {
-      mouseX = (e.clientX / window.innerWidth - 0.5) * 0.4;
-      mouseY = (e.clientY / window.innerHeight - 0.5) * 0.25;
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 0.3;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 0.2;
     });
 
     function animate() {
       requestAnimationFrame(animate);
 
-      agaveGroup.rotation.y += 0.003;
-      agaveGroup.rotation.y += (mouseX - agaveGroup.rotation.y) * 0.03;
-      agaveGroup.rotation.x += (mouseY - agaveGroup.rotation.x) * 0.03;
+      agaveGroup.rotation.y += 0.002;
+      agaveGroup.rotation.y += (mouseX - agaveGroup.rotation.y) * 0.02;
+      agaveGroup.rotation.x += (mouseY - agaveGroup.rotation.x) * 0.02;
 
       renderer.render(scene, camera);
     }
     animate();
 
-    // Reajuste responsive
     window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      const w = container3d.clientWidth;
+      const h = container3d.clientHeight;
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(w, h);
     });
   </script>
 
