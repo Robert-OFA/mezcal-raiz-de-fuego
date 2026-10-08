@@ -23,7 +23,7 @@
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0b0f19; /* Fondo oscuro elegante para resaltar el agave 3D */
+      background-color: #080b12; /* Fondo oscuro profundo para contrastar el agave dorado */
       color: var(--text-dark);
       line-height: 1.6;
       display: flex;
@@ -32,7 +32,7 @@
       position: relative;
     }
 
-    /* CONTENEDOR 3D DEL AGAVE (FONDO EN VIVO) */
+    /* CONTENEDOR 3D PARA EL AGAVE REALISTA (FONDO EN VIVO) */
     #agave-3d-container {
       position: fixed;
       top: 0;
@@ -40,7 +40,7 @@
       width: 100vw;
       height: 100vh;
       z-index: 0;
-      pointer-events: none; /* Permite hacer clic en los elementos encima */
+      pointer-events: none;
     }
 
     /* BARRA DE NAVEGACIÓN */
@@ -109,12 +109,8 @@
 
     /* ADAPTATIVO PARA MÓVILES */
     @media (max-width: 768px) {
-      nav {
-        padding: 15px 20px;
-      }
-      .menu-toggle {
-        display: flex;
-      }
+      nav { padding: 15px 20px; }
+      .menu-toggle { display: flex; }
       nav ul {
         display: none;
         flex-direction: column;
@@ -129,13 +125,8 @@
         text-align: center;
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       }
-      nav ul.mobile-open {
-        display: flex;
-      }
-      nav ul li a {
-        font-size: 1.1rem;
-        display: inline-block;
-      }
+      nav ul.mobile-open { display: flex; }
+      nav ul li a { font-size: 1.1rem; display: inline-block; }
     }
 
     /* SISTEMA DE PÁGINAS INDEPENDIENTES */
@@ -146,9 +137,7 @@
       z-index: 1;
       animation: fadeIn 0.4s ease-in-out;
     }
-    .page-section.active-page {
-      display: block;
-    }
+    .page-section.active-page { display: block; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
@@ -195,11 +184,11 @@
     .btn-yes:hover { background: var(--gold-hover); }
     .btn-no { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); }
 
-    /* HERO PRINCIPAL CON HIERVEELAGUAOA.JPG Y FONDO SEMITRANSPARENTE */
+    /* HERO PRINCIPAL */
     .hero {
       padding: 130px 20px;
       text-align: center;
-      background: linear-gradient(rgba(11, 15, 25, 0.4), rgba(11, 15, 25, 0.4)), url('hierveelaguaoa.jpg') center/cover no-repeat;
+      background: linear-gradient(rgba(8, 11, 18, 0.45), rgba(8, 11, 18, 0.45)), url('hierveelaguaoa.jpg') center/cover no-repeat;
     }
     .hero-content-box {
       background: rgba(255, 255, 255, 0.92);
@@ -212,8 +201,6 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
     .hero h2 { font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 5px; font-weight: bold; }
-    
-    /* ESTILO PARA EL ESLOGAN */
     .slogan {
       font-size: 1.25rem;
       font-style: italic;
@@ -221,9 +208,7 @@
       margin-bottom: 15px;
       font-weight: 600;
     }
-
     .hero p { color: var(--text-dark); font-size: 1.15rem; font-weight: 500; }
-    
     .hero-buttons {
       margin-top: 20px;
       display: flex;
@@ -233,11 +218,7 @@
     }
 
     /* PILARES DESTACADOS EN INICIO */
-    .highlights-section {
-      padding: 60px 20px;
-      max-width: 1050px;
-      margin: 0 auto;
-    }
+    .highlights-section { padding: 60px 20px; max-width: 1050px; margin: 0 auto; }
     .highlights-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -254,20 +235,11 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
     }
-    .highlight-card:hover {
-      transform: translateY(-5px);
-    }
-    .highlight-card h3 {
-      color: var(--primary-gold);
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-    }
-    .highlight-card p {
-      color: var(--text-dark);
-      font-size: 0.98rem;
-    }
+    .highlight-card:hover { transform: translateY(-5px); }
+    .highlight-card h3 { color: var(--primary-gold); font-size: 1.3rem; margin-bottom: 12px; }
+    .highlight-card p { color: var(--text-dark); font-size: 0.98rem; }
 
-    /* FRASE DESTACADA / CITA */
+    /* FRASE DESTACADA */
     .quote-banner {
       background: var(--bg-card);
       backdrop-filter: blur(4px);
@@ -320,187 +292,54 @@
       align-items: center;
     }
     .about-image img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      width: 100%; height: 350px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     }
     .about-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(4px);
-      padding: 35px;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      line-height: 1.8;
-      font-size: 1.05rem;
+      background: var(--bg-card); backdrop-filter: blur(4px); padding: 35px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.1); line-height: 1.8; font-size: 1.05rem;
     }
     .about-card h3 { color: var(--primary-gold); margin-bottom: 15px; font-size: 1.5rem; }
 
     /* PÁGINA PROCESO ARTESANAL */
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
+    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
     .process-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(4px);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
+      background: var(--bg-card); backdrop-filter: blur(4px); border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; flex-direction: column;
     }
-    .process-img-box {
-      width: 100%;
-      height: 180px;
-      overflow: hidden;
-    }
-    .process-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    .process-card:hover .process-img-box img {
-      transform: scale(1.05);
-    }
-    .process-body {
-      padding: 20px;
-      text-align: center;
-      flex: 1;
-    }
-    .process-step-num {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: var(--primary-gold);
-      margin-bottom: 5px;
-    }
+    .process-img-box { width: 100%; height: 180px; overflow: hidden; }
+    .process-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+    .process-card:hover .process-img-box img { transform: scale(1.05); }
+    .process-body { padding: 20px; text-align: center; flex: 1; }
+    .process-step-num { font-size: 1.3rem; font-weight: bold; color: var(--primary-gold); margin-bottom: 5px; }
     .process-card h4 { color: var(--primary-gold); margin-bottom: 8px; font-size: 1.2rem; }
 
     /* PÁGINA MARIDAJE Y CATA */
-    .tasting-layout {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 35px;
-      align-items: center;
-    }
-    .tasting-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .tasting-card {
-      border: 1px solid var(--border-color);
-      padding: 22px;
-      border-radius: 10px;
-      background: var(--bg-card);
-      backdrop-filter: blur(4px);
-      border-left: 4px solid var(--primary-gold);
-    }
+    .tasting-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; align-items: center; }
+    .tasting-grid { display: flex; flex-direction: column; gap: 20px; }
+    .tasting-card { border: 1px solid var(--border-color); padding: 22px; border-radius: 10px; background: var(--bg-card); backdrop-filter: blur(4px); border-left: 4px solid var(--primary-gold); }
     .tasting-card h4 { color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 8px; }
-    .tasting-image img {
-      width: 100%;
-      height: 380px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    }
+    .tasting-image img { width: 100%; height: 380px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
 
     /* PÁGINA PRODUCTOS */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 35px;
-      align-items: center;
-    }
-    .product-image-container img {
-      width: 100%; 
-      height: 400px; 
-      object-fit: cover;
-      border-radius: 10px; 
-      border: 1px solid var(--border-color); 
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-    .product-card {
-      background: var(--bg-card); 
-      backdrop-filter: blur(4px);
-      border-radius: 10px; 
-      padding: 35px; 
-      border: 1px solid var(--border-color); 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; align-items: center; }
+    .product-image-container img { width: 100%; height: 400px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border-color); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+    .product-card { background: var(--bg-card); backdrop-filter: blur(4px); border-radius: 10px; padding: 35px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
     .product-card h3 { color: var(--primary-gold); font-size: 1.9rem; margin-bottom: 5px; }
     .product-price { font-size: 1.8rem; color: var(--text-dark); margin: 15px 0; font-weight: bold; }
-    .btn-whatsapp { 
-      background-color: #25d366; color: #fff; font-size: 1.1rem; width: 100%; text-align: center; padding: 14px; border-radius: 6px; display: block; text-decoration: none; font-weight: bold;
-    }
+    .btn-whatsapp { background-color: #25d366; color: #fff; font-size: 1.1rem; width: 100%; text-align: center; padding: 14px; border-radius: 6px; display: block; text-decoration: none; font-weight: bold; }
 
-    /* BADGES DE ADVERTENCIA LEGAL */
-    .legal-badges {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin: 40px 0 15px 0;
-      position: relative;
-      z-index: 1;
-    }
-    .badge-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 0.8rem;
-      color: #cccccc;
-      font-weight: bold;
-    }
-    .badge-icon {
-      width: 45px;
-      height: 45px;
-      border: 2px solid var(--primary-gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      margin-bottom: 5px;
-      color: var(--primary-gold);
-      font-weight: bold;
-    }
+    /* BADGES LEGALES */
+    .legal-badges { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin: 40px 0 15px 0; position: relative; z-index: 1; }
+    .badge-item { display: flex; flex-direction: column; align-items: center; font-size: 0.8rem; color: #cccccc; font-weight: bold; }
+    .badge-icon { width: 45px; height: 45px; border: 2px solid var(--primary-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; margin-bottom: 5px; color: var(--primary-gold); font-weight: bold; }
 
-    /* BANNER OFICIAL NOM */
-    .nom-banner {
-      background: #111111;
-      color: #ffffff;
-      text-align: center;
-      padding: 16px;
-      font-weight: bold;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      margin-top: auto;
-      position: relative;
-      z-index: 1;
-    }
-    footer { 
-      padding: 35px 20px; 
-      text-align: center; 
-      font-size: 0.85rem; 
-      color: #aaaaaa; 
-      background: #090c14; 
-      position: relative; 
-      z-index: 1; 
-    }
+    /* BANNER SANITARIO OBLIGATORIO */
+    .nom-banner { background: #111111; color: #ffffff; text-align: center; padding: 16px; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; margin-top: auto; position: relative; z-index: 1; }
+    footer { padding: 35px 20px; text-align: center; font-size: 0.85rem; color: #aaaaaa; background: #06080e; position: relative; z-index: 1; }
   </style>
 </head>
 
 <body>
 
-  <!-- CONTENEDOR 3D PARA EL EFECTO AGAVE -->
+  <!-- CONTENEDOR 3D PARA EL EFECTO AGAVE REALISTA -->
   <div id="agave-3d-container"></div>
 
   <!-- MODAL DE EDAD (+18) -->
@@ -540,9 +379,7 @@
     <section class="hero">
       <div class="hero-content-box">
         <h2>Mezcal Mayahuel</h2>
-        <!-- ESLOGAN -->
         <p class="slogan">"Donde la raíz se vuelve fuego"</p>
-        
         <p>Inspirado en la mística de la diosa Mayahuel y el fuego del agave. Un destilado ancestral donde la tradición renace en cada gota.</p>
         <div class="hero-buttons">
           <button class="btn btn-yes" onclick="showPage('productos')">Ver Productos</button>
@@ -551,7 +388,6 @@
       </div>
     </section>
 
-    <!-- PILARES DESTACADOS -->
     <section class="highlights-section">
       <div class="highlights-grid">
         <div class="highlight-card">
@@ -569,7 +405,6 @@
       </div>
     </section>
 
-    <!-- BANNER DE FRASE DESTACADA -->
     <div class="quote-banner">
       <div class="quote-content">
         "El mezcal no se bebe de golpe, se toma a besos y se honra con el corazón."
@@ -588,13 +423,9 @@
         </div>
         <div class="about-card">
           <h3>Nuestra Herencia y Devoción</h3>
-          <p>
-            En <strong>Mezcal Mayahuel</strong> rendimos tributo a la diosa del agave y la fertilidad. Seleccionamos agaves maduros cultivados con cuidado en las tierras altas oaxaqueñas.
-          </p>
+          <p>En <strong>Mezcal Mayahuel</strong> rendimos tributo a la diosa del agave y la fertilidad. Seleccionamos agaves maduros cultivados con cuidado en las tierras altas oaxaqueñas.</p>
           <br>
-          <p>
-            Nuestra misión es llevar a tu copa un destilado que honra los métodos tradicionales sin acelerantes ni aditivos químicos, conservando intacta la esencia ancestral del mezcal artesanal.
-          </p>
+          <p>Nuestra misión es llevar a tu copa un destilado que honra los métodos tradicionales sin acelerantes ni aditivos químicos, conservando intacta la esencia ancestral del mezcal artesanal.</p>
         </div>
       </div>
     </div>
@@ -605,10 +436,9 @@
     <div class="container">
       <h2 class="page-title">Proceso de Elaboración Artesanal</h2>
       <div class="process-grid">
-        <!-- 01 JIMA -->
         <div class="process-card">
           <div class="process-img-box">
-            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=600&q=80" alt="Jima del agave para extraer las piñas">
+            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=600&q=80" alt="Jima del agave">
           </div>
           <div class="process-body">
             <div class="process-step-num">01</div>
@@ -616,11 +446,9 @@
             <p>Corte manual de las pencas de agaves Espadín maduros con coa para obtener el corazón o piña.</p>
           </div>
         </div>
-        
-        <!-- 02 COCCIÓN -->
         <div class="process-card">
           <div class="process-img-box">
-            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" alt="Cocción de piñas en horno cónico bajo tierra">
+            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" alt="Cocción bajo tierra">
           </div>
           <div class="process-body">
             <div class="process-step-num">02</div>
@@ -628,11 +456,9 @@
             <p>Horneado durante varios días en pozo cónico de piedra volcánica con leña de encino.</p>
           </div>
         </div>
-        
-        <!-- 03 MOLIENDA -->
         <div class="process-card">
           <div class="process-img-box">
-            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80" alt="Molienda de agave en tahona tradicional">
+            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80" alt="Molienda en tahona">
           </div>
           <div class="process-body">
             <div class="process-step-num">03</div>
@@ -640,11 +466,9 @@
             <p>Triturado de piñas cocidas con una gran rueda de cantera para extraer azúcares y fibras.</p>
           </div>
         </div>
-        
-        <!-- 04 DESTILACIÓN -->
         <div class="process-card">
           <div class="process-img-box">
-            <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=600&q=80" alt="Destilación en alambique de cobre">
+            <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=600&q=80" alt="Destilación">
           </div>
           <div class="process-body">
             <div class="process-step-num">04</div>
@@ -676,7 +500,7 @@
           </div>
         </div>
         <div class="tasting-image">
-          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Servicio tradicional de Mezcal Mayahuel">
+          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Servicio tradicional">
         </div>
       </div>
     </div>
@@ -704,48 +528,30 @@
     </div>
   </div>
 
-  <!-- SELLOS Y ADVERTENCIAS LEGALES -->
+  <!-- BADGES Y FOOTER -->
   <div class="legal-badges">
-    <div class="badge-item">
-      <div class="badge-icon">+18</div>
-      <span>MAYORES DE EDAD</span>
-    </div>
-    <div class="badge-item">
-      <div class="badge-icon">18+</div>
-      <span>SI TOMAS NO MANEJES</span>
-    </div>
-    <div class="badge-item">
-      <div class="badge-icon">NOM</div>
-      <span>EVITAR EN EMBARAZO</span>
-    </div>
+    <div class="badge-item"><div class="badge-icon">+18</div><span>MAYORES DE EDAD</span></div>
+    <div class="badge-item"><div class="badge-icon">18+</div><span>SI TOMAS NO MANEJES</span></div>
+    <div class="badge-item"><div class="badge-icon">NOM</div><span>EVITAR EN EMBARAZO</span></div>
   </div>
 
-  <!-- BANNER SANITARIO OBLIGATORIO -->
-  <div class="nom-banner">
-    EL ABUSO EN EL CONSUMO DE ESTE PRODUCTO ES NOCIVO PARA LA SALUD
-  </div>
+  <div class="nom-banner">EL ABUSO EN EL CONSUMO DE ESTE PRODUCTO ES NOCIVO PARA LA SALUD</div>
 
-  <!-- FOOTER -->
   <footer>
     <p>&copy; 2026 Mezcal Mayahuel. Todos los derechos reservados.</p>
     <p>Oaxaca, México. Prohibida la venta a menores de 18 años.</p>
   </footer>
 
   <script>
-    /* NAVEGACIÓN Y MODAL */
+    /* NAVEGACIÓN Y MODAL DE EDAD */
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
 
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('mobile-open');
-    });
+    menuToggle.addEventListener('click', () => { navMenu.classList.toggle('mobile-open'); });
 
     function showPage(pageId) {
-      const pages = document.querySelectorAll('.page-section');
-      pages.forEach(page => page.classList.remove('active-page'));
-
-      const navLinks = document.querySelectorAll('nav ul li a');
-      navLinks.forEach(link => link.classList.remove('active'));
+      document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active-page'));
+      document.querySelectorAll('nav ul li a').forEach(l => l.classList.remove('active'));
 
       const targetPage = document.getElementById('page-' + pageId);
       const targetNav = document.getElementById('nav-' + pageId);
@@ -754,7 +560,6 @@
       if (targetNav) targetNav.classList.add('active');
 
       navMenu.classList.remove('mobile-open');
-
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -767,88 +572,146 @@
       }
     }
 
-    /* RENDERIZADO 3D DEL AGAVE CON THREE.JS */
+    /* ==========================================================
+       CONSTRUCCIÓN Y RENDERIZADO DEL AGAVE REALISTA 3D EN THREE.JS
+       ========================================================== */
     const container3d = document.getElementById('agave-3d-container');
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, -1, 11);
-    camera.lookAt(0, 2, 0);
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0.5, 9);
+    camera.lookAt(0, 1.2, 0);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.shadowMap.enabled = true;
     container3d.appendChild(renderer.domElement);
 
-    const count = 380;
-    const linePositions = [];
-    const pointPositions = [];
-    const origin = new THREE.Vector3(0, -3.5, 0);
+    // Iluminación para dar volumen realista a las pencas
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
 
-    for (let i = 0; i < count; i++) {
-      const phi = Math.acos(-1 + (2 * i) / count);
-      const theta = Math.sqrt(count * Math.PI) * phi;
+    const dirLight = new THREE.DirectionalLight(0xd4af37, 1.2); // Luz dorada cálida
+    dirLight.position.set(5, 10, 7);
+    scene.add(dirLight);
 
-      const dir = new THREE.Vector3(
-        Math.cos(theta) * Math.sin(phi),
-        Math.abs(Math.cos(phi)) * 1.6,
-        Math.sin(theta) * Math.sin(phi)
-      ).normalize();
+    const pointLight = new THREE.PointLight(0xb8860b, 1, 15);
+    pointLight.position.set(-4, -2, 4);
+    scene.add(pointLight);
 
-      const length = 4.5 + Math.random() * 4;
-      const endPoint = origin.clone().add(dir.multiplyScalar(length));
+    // GRUPO PRINCIPAL DEL AGAVE
+    const agaveGroup = new THREE.Group();
+    agaveGroup.position.y = -1.8;
+    scene.add(agaveGroup);
 
-      linePositions.push(origin.x, origin.y, origin.z, endPoint.x, endPoint.y, endPoint.z);
-      pointPositions.push(endPoint.x, endPoint.y, endPoint.z);
+    // Función para crear la geometría 3D de una penca de agave (hoja lanceolada acanalada)
+    function createAgaveLeafGeometry(length, widthAtBase) {
+      const shape = new THREE.Shape();
+      shape.moveTo(0, 0);
+      shape.quadraticCurveTo(widthAtBase * 0.8, length * 0.3, widthAtBase, length * 0.6);
+      shape.quadraticCurveTo(widthAtBase * 0.4, length * 0.85, 0, length); // Punta
+      shape.quadraticCurveTo(-widthAtBase * 0.4, length * 0.85, -widthAtBase, length * 0.6);
+      shape.quadraticCurveTo(-widthAtBase * 0.8, length * 0.3, 0, 0);
+
+      const extrudeSettings = {
+        steps: 1,
+        depth: 0.08,
+        bevelEnabled: true,
+        bevelThickness: 0.04,
+        bevelSize: 0.04,
+        bevelSegments: 3
+      };
+
+      const geo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+      geo.center();
+      return geo;
     }
 
-    // Geometría y Material para las Líneas (Color Dorado)
-    const lineGeo = new THREE.BufferGeometry();
-    lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
-    const lineMat = new THREE.LineBasicMaterial({
+    // Material elegante en acabado metálico/satinado dorado
+    const leafMaterial = new THREE.MeshStandardMaterial({
       color: 0xb8860b,
-      transparent: true,
-      opacity: 0.55
+      roughness: 0.35,
+      metalness: 0.65,
+      side: THREE.DoubleSide
     });
-    const lines = new THREE.LineSegments(lineGeo, lineMat);
-    scene.add(lines);
 
-    // Geometría y Material para los Puntos/Puntas
-    const pointGeo = new THREE.BufferGeometry();
-    pointGeo.setAttribute('position', new THREE.Float32BufferAttribute(pointPositions, 3));
-    const pointMat = new THREE.PointsMaterial({
+    const leafMaterialInner = new THREE.MeshStandardMaterial({
       color: 0xd4af37,
-      size: 0.15,
-      transparent: true,
-      opacity: 0.85
+      roughness: 0.25,
+      metalness: 0.75,
+      side: THREE.DoubleSide
     });
-    const points = new THREE.Points(pointGeo, pointMat);
-    scene.add(points);
 
-    // Movimiento suave interactivo con el puntero
-    let mouseX = 0;
-    let mouseY = 0;
+    // Generar capas de pencas en espiral simétrica
+    const layers = 7;
+    const leavesPerLayer = [6, 8, 10, 12, 14, 16, 18];
 
+    for (let layer = 0; layer < layers; layer++) {
+      const count = leavesPerLayer[layer];
+      const layerRatio = layer / (layers - 1); // De 0 (centro) a 1 (exterior)
+      
+      const leafLength = 1.8 + layerRatio * 2.6; // Pencas interiores más cortas, exteriores más largas
+      const leafWidth = 0.25 + layerRatio * 0.2;
+      const leafGeo = createAgaveLeafGeometry(leafLength, leafWidth);
+
+      const mat = layer < 2 ? leafMaterialInner : leafMaterial;
+
+      for (let i = 0; i < count; i++) {
+        const leafMesh = new THREE.Mesh(leafGeo, mat);
+        
+        // Ángulo alrededor del centro
+        const angle = (i / count) * Math.PI * 2 + (layer * 0.35); // Desfase helicoidal
+        
+        // Inclinación según la capa (centro erguido, exterior abierto/curvado)
+        const tilt = 0.15 + Math.pow(layerRatio, 1.2) * 1.15; 
+
+        leafMesh.rotation.x = Math.PI / 2;
+        leafMesh.position.y = leafLength / 2;
+
+        const pivot = new THREE.Group();
+        pivot.add(leafMesh);
+
+        pivot.rotation.y = angle;
+        pivot.rotation.x = tilt;
+
+        // Ajuste sutil de escala para aleatoriedad natural
+        const randomScale = 0.9 + Math.random() * 0.2;
+        pivot.scale.set(randomScale, randomScale, randomScale);
+
+        agaveGroup.add(pivot);
+      }
+    }
+
+    // Piña central (corazón del agave)
+    const pinaGeo = new THREE.SphereGeometry(0.7, 16, 16);
+    pinaGeo.scale(1, 1.3, 1);
+    const pinaMat = new THREE.MeshStandardMaterial({ color: 0x8b6508, roughness: 0.6, metalness: 0.3 });
+    const pina = new THREE.Mesh(pinaGeo, pinaMat);
+    pina.position.y = 0.2;
+    agaveGroup.add(pina);
+
+    // Interacción suave con el cursor
+    let mouseX = 0, mouseY = 0;
     window.addEventListener('mousemove', (e) => {
-      mouseX = (e.clientX / window.innerWidth - 0.5) * 0.6;
-      mouseY = (e.clientY / window.innerHeight - 0.5) * 0.4;
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 0.5;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 0.3;
     });
 
+    // Animación suave continua
     function animate() {
       requestAnimationFrame(animate);
 
-      lines.rotation.y += (mouseX - lines.rotation.y) * 0.05;
-      lines.rotation.x += (mouseY - lines.rotation.x) * 0.05;
-
-      points.rotation.y = lines.rotation.y;
-      points.rotation.x = lines.rotation.x;
+      // Rotación constante sutil + interacción con mouse
+      agaveGroup.rotation.y += 0.003; 
+      agaveGroup.rotation.y += (mouseX - agaveGroup.rotation.y) * 0.02;
+      agaveGroup.rotation.x += (mouseY - agaveGroup.rotation.x) * 0.02;
 
       renderer.render(scene, camera);
     }
-
     animate();
 
-    // Reajuste automático al redimensionar la pantalla
+    // Responsive
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
