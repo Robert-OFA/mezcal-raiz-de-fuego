@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mezcal TRIALTE | Oaxaca</title>
+  <style>
+    /* ESTILOS GENERALES Y PALETA DE COLORES */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-light: #ffffff;
+      --bg-card: #fbf9f5;
+      --primary-gold: #b8860b;
+      --gold-hover: #d4af37;
+      --text-dark: #1a1a1a;
+      --text-muted: #555555;
+      --accent-red: #c0392b;
+      --border-color: #e5dfd3;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* BARRA DE NAVEGACIÓN */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      border-bottom: 2px solid var(--primary-gold);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    nav .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--primary-gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      cursor: pointer;
+    }
+    
+    /* BOTÓN HAMBURGUESA */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1001;
+    }
+    .menu-toggle span {
+      width: 100%;
+      height: 3px;
+      background-color: var(--primary-gold);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* LISTA DE NAVEGACIÓN EN ESCRITORIO */
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 5px 0;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      color: var(--primary-gold);
+      border-bottom: 2px solid var(--primary-gold);
+    }
+
+    /* ADAPTATIVO PARA MÓVILES */
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px 20px;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        border-bottom: 2px solid var(--primary-gold);
+        padding: 20px;
+        gap: 18px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      }
+      nav ul.mobile-open {
+        display: flex;
+      }
+      nav ul li a {
+        font-size: 1.1rem;
+        display: inline-block;
+      }
+    }
+
+    /* SISTEMA DE PÁGINAS INDEPENDIENTES */
+    .page-section {
+      display: none;
+      flex: 1;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    .page-section.active-page {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* MODAL DE EDAD (+18) */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .modal-content {
+      background: #ffffff;
+      border: 2px solid var(--primary-gold);
+      padding: 40px 30px;
+      text-align: center;
+      border-radius: 12px;
+      max-width: 460px;
+      width: 90%;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    }
+    .modal-content h2 { color: var(--primary-gold); margin-bottom: 12px; font-size: 1.8rem; letter-spacing: 2px; }
+    .modal-content p { color: #2c2c2c !important; font-size: 1rem; line-height: 1.5; }
+    .modal-buttons { margin-top: 25px; display: flex; gap: 15px; justify-content: center; }
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s, background-color 0.3s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-yes { background: var(--primary-gold); color: #fff; }
+    .btn-yes:hover { background: var(--gold-hover); }
+    .btn-no { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); }
+
+    /* HERO PRINCIPAL */
+    .hero {
+      padding: 130px 20px;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('hierveelaguaoa.jpg') center/cover no-repeat;
+    }
+    .hero-content-box {
+      background: rgba(255, 255, 255, 0.95);
+      display: inline-block;
+      padding: 45px 50px;
+      border-radius: 12px;
+      border: 2px solid var(--primary-gold);
+      max-width: 800px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .hero h2 { font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 5px; font-weight: bold; letter-spacing: 3px; }
+    
+    /* ESLOGAN */
+    .slogan {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--primary-gold);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .hero p { color: var(--text-dark); font-size: 1.15rem; font-weight: 500; }
+    
+    .hero-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* PILARES DESTACADOS */
+    .highlights-section {
+      padding: 60px 20px;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-top: 3px solid var(--primary-gold);
+      padding: 35px 25px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: transform 0.3s ease;
+    }
+    .highlight-card:hover {
+      transform: translateY(-5px);
+    }
+    .highlight-card h3 {
+      color: var(--primary-gold);
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+    .highlight-card p {
+      color: var(--text-dark);
+      font-size: 0.98rem;
+    }
+
+    /* CITA / BANNER */
+    .quote-banner {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .quote-content {
+      max-width: 750px;
+      margin: 0 auto;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--text-dark);
+    }
+    .quote-author {
+      display: block;
+      margin-top: 15px;
+      font-style: normal;
+      font-weight: bold;
+      color: var(--primary-gold);
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* CONTENEDOR DE PÁGINAS INTERNAS */
+    .container { padding: 60px 20px; max-width: 1050px; margin: 0 auto; }
+    .page-title {
+      text-align: center;
+      font-size: 2.3rem;
+      color: var(--primary-gold);
+      margin-bottom: 35px;
+      position: relative;
+    }
+    .page-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: var(--primary-gold);
+      margin: 10px auto 0;
+    }
+
+    /* SOBRE NOSOTROS */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      align-items: center;
+    }
+    .about-image img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    .about-card {
+      background: var(--bg-card);
+      padding: 35px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+    .about-card h3 { color: var(--primary-gold); margin-bottom: 15px; font-size: 1.5rem; }
+
+    /* PROCESO ARTESANAL */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+    .process-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+    }
+    .process-img-box {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+    }
+    .process-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .process-card:hover .process-img-box img {
+      transform: scale(1.05);
+    }
+    .process-body {
+      padding: 20px;
+      text-align: center;
+      flex: 1;
+    }
+    .process-step-num {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: var(--primary-gold);
+      margin-bottom: 5px;
+    }
+    .process-card h4 { color: var(--primary-gold); margin-bottom: 8px; font-size: 1.2rem; }
+
+    /* MARIDAJE Y CATA */
+    .tasting-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 35px;
+      align-items: center;
+    }
+    .tasting-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .tasting-card {
+      border: 1px solid var(--border-color);
+      padding: 22px;
+      border-radius: 10px;
+      background: #ffffff;
+      border-left: 4px solid var(--primary-gold);
+    }
+    .tasting-card h4 { color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 8px; }
+    .tasting-image img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    /* PRODUCTOS */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      align-items: center;
+    }
+    .product-image-container img {
+      width: 100%; 
+      height: 400px; 
+      object-fit: cover;
+      border-radius: 10px; 
+      border: 1px solid var(--border-color); 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .product-card {
+      background: var(--bg-card); border-radius: 10px; padding: 35px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+    .product-card h3 { color: var(--primary-gold); font-size: 1.9rem; margin-bottom: 5px; }
+    .product-price { font-size: 1.8rem; color: var(--text-dark); margin: 15px 0; font-weight: bold; }
+    .btn-whatsapp { 
+      background-color: #25d366; color: #fff; font-size: 1.1rem; width: 100%; text-align: center; padding: 14px; border-radius: 6px; display: block; text-decoration: none; font-weight: bold;
+    }
+
+    /* BADGES DE ADVERTENCIA LEGAL */
+    .legal-badges {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 40px 0 15px 0;
+    }
+    .badge-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: bold;
+    }
+    .badge-icon {
+      width: 45px;
+      height: 45px;
+      border: 2px solid #333;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    /* BANNER OFICIAL NOM */
+    .nom-banner {
+      background: #111111;
+      color: #ffffff;
+      text-align: center;
+      padding: 16px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      margin-top: auto;
+    }
+    footer { padding: 35px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); background: #fff; }
+  </style>
+</head>
+
+<body>
+
+  <!-- MODAL DE EDAD (+18) -->
+  <div id="age-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>Verificación de Edad</h2>
+      <p>Debes ser mayor de edad para ingresar a este sitio y conocer nuestros productos artesanales.</p>
+      <p style="margin-top: 12px; font-weight: bold;">¿Tienes 18 años o más?</p>
+      <div class="modal-buttons">
+        <button class="btn btn-yes" onclick="confirmAge(true)">Sí, soy mayor</button>
+        <button class="btn btn-no" onclick="confirmAge(false)">No</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav>
+    <div class="logo" onclick="showPage('inicio')">TRIALTE</div>
+    
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul id="nav-menu">
+      <li><a href="#" id="nav-inicio" class="active" onclick="showPage('inicio')">Inicio</a></li>
+      <li><a href="#" id="nav-nosotros" onclick="showPage('nosotros')">Sobre Nosotros</a></li>
+      <li><a href="#" id="nav-proceso" onclick="showPage('proceso')">Proceso</a></li>
+      <li><a href="#" id="nav-maridaje" onclick="showPage('maridaje')">Notas de Cata</a></li>
+      <li><a href="#" id="nav-productos" onclick="showPage('productos')">Productos</a></li>
+    </ul>
+  </nav>
+
+  <!-- PÁGINA 1: INICIO -->
+  <div id="page-inicio" class="page-section active-page">
+    <section class="hero">
+      <div class="hero-content-box">
+        <h2>Mezcal TRIALTE</h2>
+        <!-- ESLOGAN -->
+        <p class="slogan">"Donde la raíz se vuelve fuego"</p>
+        
+        <p>Un trinomio perfecto entre la tierra, la pasión de sus creadores y la fuerza del agave. Un destilado ancestral elaborado en los valles sagrados de Oaxaca.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-yes" onclick="showPage('productos')">Ver Productos</button>
+          <button class="btn btn-yes" style="background: transparent; color: var(--primary-gold); border: 1px solid var(--primary-gold);" onclick="showPage('nosotros')">Nuestra Historia</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILARES DESTACADOS -->
+    <section class="highlights-section">
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <h3>Raíz y Tierra</h3>
+          <p>Cultivo sustentable y selección rigurosa de agaves maduros en los valles centrales de Oaxaca.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Fuego Ancestral</h3>
+          <p>Cocción lenta en horno cónico de piedra volcánica bajo tierra para desarrollar notas ahumadas profundas.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Espíritu Único</h3>
+          <p>Doble destilación artesanal en alambique de cobre, envasado de origen y numerado a mano en pequeños lotes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANNER DE FRASE DESTACADA -->
+    <div class="quote-banner">
+      <div class="quote-content">
+        "El mezcal no se bebe de golpe, se toma a besos y se honra con el corazón."
+        <span class="quote-author">Maestros Mezcaleros de Oaxaca</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PÁGINA 2: SOBRE NOSOTROS -->
+  <div id="page-nosotros" class="page-section">
+    <div class="container">
+      <h2 class="page-title">Sobre TRIALTE</h2>
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1518635017498-87f514b751ba?auto=format&fit=crop&w=800&q=80" alt="Campo de Agaves en Oaxaca">
+        </div>
+        <div class="about-card">
+          <h3>Nuestra Herencia y Devoción</h3>
+          <p>
+            <strong>TRIALTE</strong> nace de la convergencia de tres visiones unidas por un mismo propósito: honrar el arte líquido de Oaxaca. Representamos la unión armónica entre tres pilares fundamentales (Raíz, Fuego y Espíritu).
+          </p>
+          <br>
+          <p>
+            Nuestra misión es llevar a tu copa un destilado 100% artesanal, elaborado sin prisa ni aditivos químicos, respetando cada etapa del ciclo natural del agave y el legado maestro mezcalero.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PÁGINA 3: PROCESO ARTESANAL -->
+  <div id="page-proceso" class="page-section">
+    <div class="container">
+      <h2 class="page-title">Proceso de Elaboración Artesanal</h2>
+      <div class="process-grid">
+        <!-- 01 JIMA -->
+        <div class="process-card">
+          <div class="process-img-box">
+            <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?auto=format&fit=crop&w=600&q=80" alt="Jima del agave para extraer las piñas">
+          </div>
+          <div class="process-body">
+            <div class="process-step-num">01</div>
+            <h4>Jima / Cosecha</h4>
+            <p>Corte manual de las pencas de agaves Espadín maduros con coa para obtener el corazón o piña.</p>
+          </div>
+        </div>
+        
+        <!-- 02 COCCIÓN -->
+        <div class="process-card">
+          <div class="process-img-box">
+            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" alt="Cocción de piñas en horno cónico bajo tierra">
+          </div>
+          <div class="process-body">
+            <div class="process-step-num">02</div>
+            <h4>Cocción Bajo Tierra</h4>
+            <p>Horneado durante varios días en pozo cónico de piedra volcánica con leña de encino.</p>
+          </div>
+        </div>
+        
+        <!-- 03 MOLIENDA -->
+        <div class="process-card">
+          <div class="process-img-box">
+            <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80" alt="Molienda de agave en tahona tradicional">
+          </div>
+          <div class="process-body">
+            <div class="process-step-num">03</div>
+            <h4>Molienda en Tahona</h4>
+            <p>Triturado de piñas cocidas con una gran rueda de cantera para extraer azúcares y fibras.</p>
+          </div>
+        </div>
+        
+        <!-- 04 DESTILACIÓN -->
+        <div class="process-card">
+          <div class="process-img-box">
+            <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=600&q=80" alt="Destilación en alambique de cobre">
+          </div>
+          <div class="process-body">
+            <div class="process-step-num">04</div>
+            <h4>Destilación</h4>
+            <p>Doble destilación en alambique de cobre que otorga suavidad y preserva aromas herbales y ahumados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PÁGINA 4: NOTAS DE CATA Y MARIDAJE -->
+  <div id="page-maridaje" class="page-section">
+    <div class="container">
+      <h2 class="page-title">Notas de Cata y Maridaje</h2>
+      <div class="tasting-layout">
+        <div class="tasting-grid">
+          <div class="tasting-card">
+            <h4>Vista</h4>
+            <p>Cristalino, limpio y brillante, con un perleo fino y persistente al servir.</p>
+          </div>
+          <div class="tasting-card">
+            <h4>Aroma</h4>
+            <p>Sutil aroma a agave cocido, toques de cítricos, hierba fresca y un humo suave refinado.</p>
+          </div>
+          <div class="tasting-card">
+            <h4>Maridaje Sugerido</h4>
+            <p>Acompaña con rodajas de naranja, sal de gusano, quesillo oaxaqueño o chocolate amargo artesanal.</p>
+          </div>
+        </div>
+        <div class="tasting-image">
+          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80" alt="Servicio tradicional de Mezcal TRIALTE">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PÁGINA 5: PRODUCTOS -->
+  <div id="page-productos" class="page-section">
+    <div class="container">
+      <h2 class="page-title">Edición Reservada</h2>
+      <div class="product-grid">
+        <div class="product-image-container">
+          <img src="botellas.jpg" alt="Botellas de Mezcal TRIALTE">
+        </div>
+        <div class="product-card">
+          <h3>Espadín Artesanal TRIALTE</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">45% Alc. Vol. | Lote Limitado 001/26</p>
+          <div class="product-price">750 ml</div>
+          <p style="color: var(--text-dark);">Destilado suave al paladar con carácter ahumado equilibrado. Ideal para disfrutar directo a besos o en coctelería de autor de alta gama.</p>
+          <br>
+          <a href="https://wa.me/5215500000000?text=Hola,%20me%20interesa%20comprar%20una%20botella%20de%20Mezcal%20TRIALTE." target="_blank" class="btn btn-whatsapp">
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SELLOS Y ADVERTENCIAS LEGALES -->
+  <div class="legal-badges">
+    <div class="badge-item">
+      <div class="badge-icon">+18</div>
+      <span>MAYORES DE EDAD</span>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon">18+</div>
+      <span>SI TOMAS NO MANEJES</span>
+    </div>
+    <div class="badge-item">
+      <div class="badge-icon">NOM</div>
+      <span>EVITAR EN EMBARAZO</span>
+    </div>
+  </div>
+
+  <!-- BANNER SANITARIO OBLIGATORIO -->
+  <div class="nom-banner">
+    EL ABUSO EN EL CONSUMO DE ESTE PRODUCTO ES NOCIVO PARA LA SALUD
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Mezcal TRIALTE. Todos los derechos reservados.</p>
+    <p>Oaxaca, México. Prohibida la venta a menores de 18 años.</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('mobile-open');
+    });
+
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page-section');
+      pages.forEach(page => page.classList.remove('active-page'));
+
+      const navLinks = document.querySelectorAll('nav ul li a');
+      navLinks.forEach(link => link.classList.remove('active'));
+
+      const targetPage = document.getElementById('page-' + pageId);
+      const targetNav = document.getElementById('nav-' + pageId);
+
+      if (targetPage) targetPage.classList.add('active-page');
+      if (targetNav) targetNav.classList.add('active');
+
+      navMenu.classList.remove('mobile-open');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function confirmAge(isAdult) {
+      if (isAdult) {
+        document.getElementById('age-modal').style.display = 'none';
+      } else {
+        alert('Lo sentimos, debes ser mayor de 18 años para acceder a este sitio.');
+        window.location.href = 'https://www.google.com';
+      }
+    }
+  </script>
+
+</body>
+</html>
