@@ -27,20 +27,6 @@
       flex-direction: column;
       min-height: 100vh;
       position: relative;
-      overflow-x: hidden;
-    }
-
-    /* ELEMENTO VISUAL TIPO 400 CONEJOS (IMAGEN PNG RECORTE EN ESQUINA/LATERAL) */
-    .agave-overlay-asset {
-      position: fixed;
-      bottom: -20px;
-      left: -30px;
-      width: 380px;
-      max-width: 45vw;
-      z-index: 998;
-      pointer-events: none; /* No interfiere con clics */
-      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
-      transition: transform 0.5s ease;
     }
 
     /* BARRA DE NAVEGACIÓN */
@@ -124,11 +110,6 @@
       }
       nav ul.mobile-open { display: flex; }
       nav ul li a { font-size: 1.1rem; display: inline-block; }
-      .agave-overlay-asset {
-        width: 260px;
-        left: -40px;
-        bottom: -10px;
-      }
     }
 
     .page-section {
@@ -145,6 +126,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* MODAL DE EDAD (+18) */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -183,6 +165,7 @@
     .btn-yes:hover { background: var(--gold-hover); }
     .btn-no { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); }
 
+    /* HERO PRINCIPAL */
     .hero {
       padding: 130px 20px;
       text-align: center;
@@ -215,6 +198,7 @@
       flex-wrap: wrap;
     }
 
+    /* DESTACADOS */
     .highlights-section { padding: 60px 20px; max-width: 1050px; margin: 0 auto; }
     .highlights-grid {
       display: grid;
@@ -235,6 +219,7 @@
     .highlight-card h3 { color: var(--primary-gold); font-size: 1.3rem; margin-bottom: 12px; }
     .highlight-card p { color: var(--text-dark); font-size: 0.98rem; }
 
+    /* FRASE DE MARCA */
     .quote-banner {
       background: var(--bg-card);
       border-top: 1px solid var(--border-color);
@@ -260,6 +245,7 @@
       text-transform: uppercase;
     }
 
+    /* CONTENEDOR SECCIONES INTERNAS */
     .container { padding: 60px 20px; max-width: 1050px; margin: 0 auto; }
     .page-title {
       text-align: center;
@@ -314,9 +300,6 @@
 </head>
 
 <body>
-
-  <!-- ELEMENTO VISUAL REALISTA DE AGAVE SOLAPADO EN LA ESQUINA -->
-  <img src="https://images.unsplash.com/photo-1518635017498-87f514b751ba?auto=format&fit=crop&w=600&q=80" alt="Agave Espadín" class="agave-overlay-asset" id="agave-asset">
 
   <!-- MODAL DE EDAD (+18) -->
   <div id="age-modal" class="modal-overlay">
@@ -494,7 +477,7 @@
           <h3>Espadín Artesanal Mayahuel</h3>
           <p style="color: var(--text-muted); font-size: 0.9rem;">45% Alc. Vol. | Lote Limitado 001/25</p>
           <div class="product-price">1000 ml & 750 ml</div>
-          <p style="color: var(--text-dark);">Destilado suave al paladar con carácter ahumado equilibrado. Ideal para disfrutar directo a besos o coctelería de autor.</p>
+          <p style="color: var(--text-dark);">Destilado suave al paladar con carácter ahumado equilibrado. Ideal para disfrutar directo a besos o en coctelería de autor.</p>
           <br>
           <a href="https://wa.me/5215500000000?text=Hola,%20me%20interesa%20comprar%20una%20botella%20de%20Mezcal%20Mayahuel." target="_blank" class="btn btn-whatsapp">
             Pedir por WhatsApp
@@ -546,14 +529,6 @@
         window.location.href = 'https://www.google.com';
       }
     }
-
-    /* EFECTO PARALLAX SUTIL AL MOVER EL CURSOR SOBRE EL ASSET DE AGAVE */
-    const agaveAsset = document.getElementById('agave-asset');
-    window.addEventListener('mousemove', (e) => {
-      const moveX = (e.clientX / window.innerWidth - 0.5) * 15;
-      const moveY = (e.clientY / window.innerHeight - 0.5) * 10;
-      agaveAsset.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    });
   </script>
 
 </body>
